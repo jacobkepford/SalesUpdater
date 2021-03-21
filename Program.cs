@@ -28,13 +28,19 @@ namespace SalesUpdater
 
 
             // List message.
+            List<Message> messageDataItems = new List<Message>();
             IList<Message> messages = emailListRequest.Execute().Messages;
             if (messages != null && messages.Count > 0)
             {
-                foreach (var messageItem in messages)
+                foreach (var message in messages)
                 {
-                    var emailInfoRequest = active_service.Users.Messages.Get("me", messageItem.Id);
+                    var emailInfoRequest = active_service.Users.Messages.Get("me", message.Id);
                     Message emailData = emailInfoRequest.Execute();
+                    messageDataItems.Add(emailData);
+                }
+                foreach (var messageItem in messageDataItems)
+                {
+                    Console.WriteLine(messageItem.Payload.Headers[21].Value);
                 }
             }
             else
