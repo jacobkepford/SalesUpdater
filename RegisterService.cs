@@ -13,13 +13,25 @@ using System.Threading.Tasks;
 
 namespace SalesUpdater
 {
-    public class RegisterService : GmailService
+    public class RegisterService
     {
         static string[] Scopes = { GmailService.Scope.GmailReadonly };
-        new static string ApplicationName = "Gmail API .NET Quickstart";
-
+        static string ApplicationName = "SalesUpdater";
         UserCredential credential;
 
+        public GmailService NewService(){
+            
+            //Obtain Credentials
+            credential = GetCredentials();
+            // Create Gmail API service.
+            var service = new GmailService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = ApplicationName,
+            });
+
+            return service;
+        }
         public UserCredential GetCredentials(){
             using (var stream =
                 new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
@@ -37,17 +49,6 @@ namespace SalesUpdater
             }
             return credential;
 
-        }
-        public GmailService StartService(UserCredential credential){
-            
-            // Create Gmail API service.
-            var service = new GmailService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-
-            return service;
         }
         
     }
