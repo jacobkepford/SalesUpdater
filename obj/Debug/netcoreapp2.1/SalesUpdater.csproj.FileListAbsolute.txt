@@ -1,0 +1,11 @@
+/Users/jacob/Projects/SalesUpdater/bin/Debug/netcoreapp2.1/SalesUpdater.deps.json
+/Users/jacob/Projects/SalesUpdater/bin/Debug/netcoreapp2.1/SalesUpdater.runtimeconfig.json
+/Users/jacob/Projects/SalesUpdater/bin/Debug/netcoreapp2.1/SalesUpdater.runtimeconfig.dev.json
+/Users/jacob/Projects/SalesUpdater/bin/Debug/netcoreapp2.1/SalesUpdater.dll
+/Users/jacob/Projects/SalesUpdater/bin/Debug/netcoreapp2.1/SalesUpdater.pdb
+/Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.csprojAssemblyReference.cache
+/Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.csproj.CoreCompileInputs.cache
+/Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.AssemblyInfoInputs.cache
+/Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.AssemblyInfo.cs
+/Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.dll
+/Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.pdb
