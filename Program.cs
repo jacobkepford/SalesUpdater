@@ -40,14 +40,18 @@ namespace SalesUpdater
                 }
                 foreach (var messageItem in messageDataItems)
                 {
-                    Console.WriteLine(messageItem.Payload.Headers[21].Value);
+                    string body = messageItem.Payload.Parts[0].Body.Data;
+                    String codedBody = body.Replace("-", "+");
+                    codedBody = codedBody.Replace("_", "/");
+                    byte[] data = Convert.FromBase64String(codedBody);
+                    body = Encoding.UTF8.GetString(data);
+                    Console.WriteLine(body);
                 }
             }
             else
             {
                 Console.WriteLine("No messages found.");
             }
-            Console.Read();
         }
     }
 }
