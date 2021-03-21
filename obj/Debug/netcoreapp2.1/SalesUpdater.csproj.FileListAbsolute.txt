@@ -9,3 +9,15 @@
 /Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.AssemblyInfo.cs
 /Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.dll
 /Users/jacob/Projects/SalesUpdater/obj/Debug/netcoreapp2.1/SalesUpdater.pdb
+F:\Projects\SalesUpdater\SalesUpdater\bin\Debug\netcoreapp2.1\SalesUpdater.deps.json
+F:\Projects\SalesUpdater\SalesUpdater\bin\Debug\netcoreapp2.1\SalesUpdater.runtimeconfig.json
+F:\Projects\SalesUpdater\SalesUpdater\bin\Debug\netcoreapp2.1\SalesUpdater.runtimeconfig.dev.json
+F:\Projects\SalesUpdater\SalesUpdater\bin\Debug\netcoreapp2.1\SalesUpdater.dll
+F:\Projects\SalesUpdater\SalesUpdater\bin\Debug\netcoreapp2.1\SalesUpdater.pdb
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.csprojAssemblyReference.cache
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.AssemblyInfoInputs.cache
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.AssemblyInfo.cs
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.csproj.CoreCompileInputs.cache
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.dll
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.pdb
+F:\Projects\SalesUpdater\SalesUpdater\obj\Debug\netcoreapp2.1\SalesUpdater.genruntimeconfig.cache
