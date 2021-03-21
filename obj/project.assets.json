@@ -879,26 +879,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jacob\\.nuget\\packages\\": {}
+    "/Users/jacob/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+      "projectUniqueName": "/Users/jacob/Projects/SalesUpdater/SalesUpdater.csproj",
       "projectName": "SalesUpdater",
-      "projectPath": "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
-      "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\SalesUpdater\\SalesUpdater\\obj\\",
+      "projectPath": "/Users/jacob/Projects/SalesUpdater/SalesUpdater.csproj",
+      "packagesPath": "/Users/jacob/.nuget/packages/",
+      "outputPath": "/Users/jacob/Projects/SalesUpdater/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Jacob\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/jacob/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -920,23 +922,16 @@
             "version": "[1.51.0.2251, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

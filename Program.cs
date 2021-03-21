@@ -19,25 +19,27 @@ namespace SalesUpdater
         static void Main(string[] args)
         {
             //Create a new Gmail API Service
-            RegisterService service = new RegisterService();            
+            RegisterService service = new RegisterService();
             GmailService active_service = service.NewService();
 
-            //Make a request to pull labels
-            UsersResource.LabelsResource.ListRequest request = active_service.Users.Labels.List("me");
+            //Make a request to pull emails
+            UsersResource.MessagesResource.ListRequest emailListRequest = active_service.Users.Messages.List("me");
+            emailListRequest.LabelIds = "Label_6420272116865146";
 
-            // List labels.
-            IList<Label> labels = request.Execute().Labels;
-            Console.WriteLine("Labels:");
-            if (labels != null && labels.Count > 0)
+
+            // List message.
+            IList<Message> messages = emailListRequest.Execute().Messages;
+            if (messages != null && messages.Count > 0)
             {
-                foreach (var labelItem in labels)
+                foreach (var messageItem in messages)
                 {
-                    Console.WriteLine("{0}", labelItem.Name);
+                    var emailInfoRequest = active_service.Users.Messages.Get("me", messageItem.Id);
+                    Message emailData = emailInfoRequest.Execute();
                 }
             }
             else
             {
-                Console.WriteLine("No labels found.");
+                Console.WriteLine("No messages found.");
             }
             Console.Read();
         }
