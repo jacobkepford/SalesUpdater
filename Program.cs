@@ -19,7 +19,7 @@ namespace SalesUpdater
         static void Main(string[] args)
         {
             //Create a new Gmail API Service
-            RegisterService service = new RegisterService();
+            EmailService service = new EmailService();
             GmailService active_service = service.NewService();
 
             //Make a request to pull emails
