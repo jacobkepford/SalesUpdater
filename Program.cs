@@ -18,13 +18,11 @@ namespace SalesUpdater
 
         static void Main(string[] args)
         {
-            UserCredential credential;
-            
             RegisterService service = new RegisterService();
-            credential = service.GetCredentials();
-            GmailService running_service = service.StartService(credential);
+            
+            GmailService active_service = service.NewService();
 
-            UsersResource.LabelsResource.ListRequest request = running_service.Users.Labels.List("rtbredge@gmail.com");
+            UsersResource.LabelsResource.ListRequest request = active_service.Users.Labels.List("me");
 
             // List labels.
             IList<Label> labels = request.Execute().Labels;
