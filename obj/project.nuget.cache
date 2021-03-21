@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "LxytBdzwvVk3RH1NdPXawV+x+glGQJlTpAQ4PxwZ/3oAskvqHwicR8KYggUJb7+aV7AlHxCWkW67z0kfpZ8XRg==",
+  "success": true,
+  "projectFilePath": "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.core\\1.51.0\\google.apis.core.1.51.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.gmail.v1\\1.51.0.2251\\google.apis.gmail.v1.1.51.0.2251.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.1.0\\microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Jacob\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
