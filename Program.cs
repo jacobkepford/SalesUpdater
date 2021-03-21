@@ -18,10 +18,11 @@ namespace SalesUpdater
 
         static void Main(string[] args)
         {
-            RegisterService service = new RegisterService();
-            
+            //Create a new Gmail API Service
+            RegisterService service = new RegisterService();            
             GmailService active_service = service.NewService();
 
+            //Make a request to pull labels
             UsersResource.LabelsResource.ListRequest request = active_service.Users.Labels.List("me");
 
             // List labels.
