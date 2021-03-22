@@ -18,24 +18,26 @@ namespace SalesUpdater
 
         static void Main(string[] args)
         {
-            string[] Scopes = { GmailService.Scope.GmailReadonly };
-            string ApplicationName = "SalesUpdater";
+            string[] scopes = { GmailService.Scope.GmailReadonly };
+            string applicationName = "SalesUpdater";
 
-            UserCredential credential = GetCredentials(Scopes);
+            //Pull credentials from credentials.json
+            UserCredential credential = GetCredentials(scopes);
 
             //Create a new Gmail API Service
             var service = new GmailService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
+                ApplicationName = applicationName,
             });
             
             
-            //Make a request to pull emails
+            //Format a request to pull emails
             UsersResource.MessagesResource.ListRequest emailListRequest = service.Users.Messages.List("me");
             emailListRequest.LabelIds = "Label_6420272116865146";
             
-            List<Message> messageDataItems = GetEmails(emailListRequest, service);
+            //Excute Email request
+            List<Message> messageDataItems = GetEmails(service, emailListRequest);
 
             foreach (var messageItem in messageDataItems)
                 {
@@ -70,7 +72,7 @@ namespace SalesUpdater
 
         }
 
-        static List<Message> GetEmails(UsersResource.MessagesResource.ListRequest emailListRequest, GmailService service)
+        static List<Message> GetEmails(GmailService service, UsersResource.MessagesResource.ListRequest emailListRequest)
         {
         // List message.
             List<Message> messageDataItems = new List<Message>();
@@ -83,15 +85,12 @@ namespace SalesUpdater
                     Message emailData = emailInfoRequest.Execute();
                     messageDataItems.Add(emailData);
                 }
-
-                return messageDataItems;
-                
             }
             else
             {
                 Console.WriteLine("No messages found.");
-                return messageDataItems;
             }
+            return messageDataItems;
 
         }
 
