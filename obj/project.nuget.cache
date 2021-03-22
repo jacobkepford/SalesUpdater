@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ddms4ArBsuFOdHxCu+m3ISYFoz8YKVcXWfo5GHiTypi5luYkruJQxNSxgPpPVo2THqgJW2WGFUabH8nx52zb/w==",
+  "dgSpecHash": "SMpfto0h4xw9uKZWGCULfPgoKd/pIDa7OcXOpYpp1QO/PVSh+0bOM/gpaElC2ycW/9OdYiTlQ7RZlK/HWE9H7g==",
   "success": true,
-  "projectFilePath": "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+  "projectFilePath": "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jacob\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
     "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",

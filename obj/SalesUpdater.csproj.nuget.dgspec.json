@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj": {}
+    "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj": {}
   },
   "projects": {
-    "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj": {
+    "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+        "projectUniqueName": "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj",
         "projectName": "SalesUpdater",
-        "projectPath": "F:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+        "projectPath": "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj",
         "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\SalesUpdater\\SalesUpdater\\obj\\",
+        "outputPath": "F:\\Projects\\SalesUpdater\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jacob\\AppData\\Roaming\\NuGet\\NuGet.Config",
