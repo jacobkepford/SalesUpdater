@@ -32,13 +32,14 @@ namespace SalesUpdater
             });
             
             
-            //Format a request to pull emails
+            //Format a request to pull email id's
             UsersResource.MessagesResource.ListRequest emailListRequest = service.Users.Messages.List("me");
             emailListRequest.LabelIds = "Label_6420272116865146";
             
             //Excute Email request
             List<Message> messageDataItems = GetEmails(service, emailListRequest);
 
+            
             foreach (var messageItem in messageDataItems)
                 {
                     string body = messageItem.Payload.Parts[0].Body.Data;
@@ -51,7 +52,7 @@ namespace SalesUpdater
 
             
         }
-        static UserCredential GetCredentials(string[] scopes)
+        private static UserCredential GetCredentials(string[] scopes)
         {
             UserCredential credential;
             using (var stream =
@@ -72,16 +73,20 @@ namespace SalesUpdater
 
         }
 
-        static List<Message> GetEmails(GmailService service, UsersResource.MessagesResource.ListRequest emailListRequest)
+        private static List<Message> GetEmails(GmailService service, UsersResource.MessagesResource.ListRequest emailListRequest)
         {
-        // List message.
             List<Message> messageDataItems = new List<Message>();
+
+            //Execute get email API request and save to list
             IList<Message> messages = emailListRequest.Execute().Messages;
             if (messages != null && messages.Count > 0)
             {
                 foreach (var message in messages)
                 {
+                    //Format a new request to get email metadata
                     var emailInfoRequest = service.Users.Messages.Get("me", message.Id);
+                    
+                    //Execute request for email metadata and add to list
                     Message emailData = emailInfoRequest.Execute();
                     messageDataItems.Add(emailData);
                 }
@@ -93,6 +98,12 @@ namespace SalesUpdater
             return messageDataItems;
 
         }
+
+        //Pull for each to get body data
+        // private static GetEmailBodyText(string body)
+        // {
+
+        // }
 
     }
 }
