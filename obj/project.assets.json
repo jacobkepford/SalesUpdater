@@ -207,11 +207,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "f:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+      "projectUniqueName": "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj",
       "projectName": "SalesUpdater",
-      "projectPath": "f:\\Projects\\SalesUpdater\\SalesUpdater\\SalesUpdater.csproj",
+      "projectPath": "F:\\Projects\\SalesUpdater\\SalesUpdater.csproj",
       "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-      "outputPath": "f:\\Projects\\SalesUpdater\\SalesUpdater\\obj\\",
+      "outputPath": "F:\\Projects\\SalesUpdater\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jacob\\AppData\\Roaming\\NuGet\\NuGet.Config",
