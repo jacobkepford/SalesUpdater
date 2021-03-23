@@ -97,7 +97,7 @@ namespace SalesUpdater
         //Pull email body from each email supplied
         private static List<string> GetMessageBodies(List<Message> messageDataItems)
         {
-            List<string> messageBodies = new List<string>;
+            List<string> messageBodies = new List<string>();
 
             foreach (var messageItem in messageDataItems)
                 {
