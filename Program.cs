@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SalesUpdater.Data;
+using System.Text.RegularExpressions;
 
 namespace SalesUpdater
 {
@@ -43,7 +45,7 @@ namespace SalesUpdater
             //Extract email body from each email
             List<string> messageBodies = GetMessageBodies(messageDataItems);
 
-            
+            ExtractEmailData(messageBodies);
 
             
         }
@@ -114,5 +116,27 @@ namespace SalesUpdater
             return messageBodies;
         }
 
+        private static void ExtractEmailData(List<string> messageBodies)
+        {
+            foreach (var message in messageBodies)
+            {
+                Email email = new Email();
+
+                string orderIDExpr = "Order: \\#[0-9]+";
+
+                ShowMatch(message, orderIDExpr);
+            }
+        }
+
+        private static void ShowMatch(string text, string expr) 
+        {
+            MatchCollection mc = Regex.Matches(text, expr);
+         
+            foreach (Match m in mc) 
+            {
+                Console.WriteLine(m);
+            }
+
+        }
     }
 }
