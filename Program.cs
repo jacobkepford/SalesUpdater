@@ -34,21 +34,16 @@ namespace SalesUpdater
             
             //Format a request to pull email id's
             UsersResource.MessagesResource.ListRequest emailListRequest = service.Users.Messages.List("me");
+            //LabelID = Orders
             emailListRequest.LabelIds = "Label_6420272116865146";
             
-            //Excute Email request
+            //Execute Email request to get all email metadata
             List<Message> messageDataItems = GetEmails(service, emailListRequest);
 
+            //Extract email body from each email
+            List<string> messageBodies = GetMessageBodies(messageDataItems);
+
             
-            foreach (var messageItem in messageDataItems)
-                {
-                    string body = messageItem.Payload.Parts[0].Body.Data;
-                    String codedBody = body.Replace("-", "+");
-                    codedBody = codedBody.Replace("_", "/");
-                    byte[] data = Convert.FromBase64String(codedBody);
-                    body = Encoding.UTF8.GetString(data);
-                    Console.WriteLine(body);
-                }
 
             
         }
@@ -99,11 +94,22 @@ namespace SalesUpdater
 
         }
 
-        //Pull for each to get body data
-        // private static GetEmailBodyText(string body)
-        // {
+        //Pull email body from each email supplied
+        private static List<string> GetMessageBodies(List<Message> messageDataItems)
+        {
+            List<string> messageBodies = new List<string>;
 
-        // }
+            foreach (var messageItem in messageDataItems)
+                {
+                    string body = messageItem.Payload.Parts[0].Body.Data;
+                    String codedBody = body.Replace("-", "+");
+                    codedBody = codedBody.Replace("_", "/");
+                    byte[] data = Convert.FromBase64String(codedBody);
+                    body = Encoding.UTF8.GetString(data);
+                    messageBodies.Add(body);
+                }
+            return messageBodies;
+        }
 
     }
 }
