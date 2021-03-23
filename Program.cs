@@ -47,6 +47,8 @@ namespace SalesUpdater
 
             
         }
+
+        //Get the user credentials stored in credentials.json
         private static UserCredential GetCredentials(string[] scopes)
         {
             UserCredential credential;
@@ -68,6 +70,7 @@ namespace SalesUpdater
 
         }
 
+        //API Request to get Email and Email Metadata
         private static List<Message> GetEmails(GmailService service, UsersResource.MessagesResource.ListRequest emailListRequest)
         {
             List<Message> messageDataItems = new List<Message>();
