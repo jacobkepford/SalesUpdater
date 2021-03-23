@@ -122,7 +122,7 @@ namespace SalesUpdater
             {
                 Email email = new Email();
 
-                string orderIDExpr = "Order: \\#[0-9]+";
+                string orderIDExpr = "Order: \\(#[0-9]+)";
 
                 ShowMatch(message, orderIDExpr);
             }
@@ -130,13 +130,8 @@ namespace SalesUpdater
 
         private static void ShowMatch(string text, string expr) 
         {
-            MatchCollection mc = Regex.Matches(text, expr);
-         
-            foreach (Match m in mc) 
-            {
-                Console.WriteLine(m);
-            }
-
+            Match m = Regex.Match(text, expr);
+            
         }
     }
 }
