@@ -1,0 +1,9 @@
+F:\Projects\SalesUpdater\EmailApi\bin\Debug\netcoreapp3.1\EmailApi.deps.json
+F:\Projects\SalesUpdater\EmailApi\bin\Debug\netcoreapp3.1\EmailApi.dll
+F:\Projects\SalesUpdater\EmailApi\bin\Debug\netcoreapp3.1\EmailApi.pdb
+F:\Projects\SalesUpdater\EmailApi\obj\Debug\netcoreapp3.1\EmailApi.csprojAssemblyReference.cache
+F:\Projects\SalesUpdater\EmailApi\obj\Debug\netcoreapp3.1\EmailApi.AssemblyInfoInputs.cache
+F:\Projects\SalesUpdater\EmailApi\obj\Debug\netcoreapp3.1\EmailApi.AssemblyInfo.cs
+F:\Projects\SalesUpdater\EmailApi\obj\Debug\netcoreapp3.1\EmailApi.csproj.CoreCompileInputs.cache
+F:\Projects\SalesUpdater\EmailApi\obj\Debug\netcoreapp3.1\EmailApi.dll
+F:\Projects\SalesUpdater\EmailApi\obj\Debug\netcoreapp3.1\EmailApi.pdb

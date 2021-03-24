@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.Gmail.v1" Version="1.51.0.2251" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmailApi\EmailApi.csproj" />
+  </ItemGroup>
+
+</Project>
