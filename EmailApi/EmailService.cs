@@ -134,9 +134,5 @@ namespace EmailApi
 
         }
         
-        // // ExtractEmailData(messageBodies);
-
-        //Get the user credentials stored in credentials.json
-        
     }
 }
