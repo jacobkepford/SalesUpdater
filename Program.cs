@@ -122,8 +122,15 @@ namespace SalesUpdater
             {
                 Email email = new Email();
 
+                //Format and run regex search for Order ID
                 string orderIDExpr = "Order: \\#([0-9]+)";
                 email.OrderNumber = ShowMatch(message, orderIDExpr);
+
+                //Format and run regex search for product -- not working
+                string orderProductExpr = "Price\r\n(.*) \\$";
+                email.Product = ShowMatch(message, orderProductExpr);
+                Console.WriteLine(email.Product);
+
             }
         }
 
@@ -131,7 +138,8 @@ namespace SalesUpdater
         {
             Match m = Regex.Match(text, expr);
             Group g = m.Groups[1];
-            return g.To();
+            Console.WriteLine(g);
+            return g.ToString();
 
         }
     }
