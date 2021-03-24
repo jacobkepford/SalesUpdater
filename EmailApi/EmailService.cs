@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using EmailApi.Data;
+using EmailApi.Utilities;
 
 namespace EmailApi
 {
@@ -32,6 +33,7 @@ namespace EmailApi
             HttpClientInitializer = credential,
             ApplicationName = applicationName,
         });
+            
         
         }
 
@@ -40,7 +42,7 @@ namespace EmailApi
         {
             UserCredential credential;
             using (var stream =
-                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
+                new FileStream("F:\\Projects\\SalesUpdater\\credentials.json", FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
@@ -105,6 +107,7 @@ namespace EmailApi
         public List<Email> ExtractEmailData(List<string> messageBodies)
         {
             List<Email> emails = new List<Email>();
+            EmailUtilities emailTools = new EmailUtilities();
             
             foreach (var message in messageBodies)
             {
@@ -112,11 +115,11 @@ namespace EmailApi
 
                 //Format and run regex search for Order ID
                 string orderIDExpr = "Order: \\#([0-9]+)";
-                email.OrderNumber = ShowMatch(message, orderIDExpr);
+                email.OrderNumber = emailTools.EmailSearch(message, orderIDExpr);
 
                 //Format and run regex search for product
                 string orderProductExpr = "Price(.*) [0-9] \\$";
-                email.Product = ShowMatch(message, orderProductExpr);
+                email.Product = emailTools.EmailSearch(message, orderProductExpr);
                 Console.WriteLine(email.Product);
 
                 emails.Add(email);
@@ -126,13 +129,5 @@ namespace EmailApi
             return emails;
         }
 
-        private static string ShowMatch(string text, string expr)
-        {
-            Match m = Regex.Match(text, expr);
-            Group g = m.Groups[1];
-            return g.ToString();
-
-        }
-        
     }
 }
