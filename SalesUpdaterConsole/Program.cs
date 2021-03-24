@@ -39,6 +39,7 @@ namespace SalesUpdater
             //Extract email body from each email
             List<string> messageBodies = emailService.GetMessageBodies(messageDataItems);
 
+            //Extract key email data from each email body
             List<Email> emails = emailService.ExtractEmailData(messageBodies);
 
 
