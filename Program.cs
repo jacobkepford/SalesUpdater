@@ -32,13 +32,13 @@ namespace SalesUpdater
                 HttpClientInitializer = credential,
                 ApplicationName = applicationName,
             });
-            
-            
+
+
             //Format a request to pull email id's
             UsersResource.MessagesResource.ListRequest emailListRequest = service.Users.Messages.List("me");
             //LabelID = Orders
             emailListRequest.LabelIds = "Label_6420272116865146";
-            
+
             //Execute Email request to get all email metadata
             List<Message> messageDataItems = GetEmails(service, emailListRequest);
 
@@ -47,7 +47,7 @@ namespace SalesUpdater
 
             ExtractEmailData(messageBodies);
 
-            
+
         }
 
         //Get the user credentials stored in credentials.json
@@ -85,7 +85,7 @@ namespace SalesUpdater
                 {
                     //Format a new request to get email metadata
                     var emailInfoRequest = service.Users.Messages.Get("me", message.Id);
-                    
+
                     //Execute request for email metadata and add to list
                     Message emailData = emailInfoRequest.Execute();
                     messageDataItems.Add(emailData);
@@ -105,14 +105,14 @@ namespace SalesUpdater
             List<string> messageBodies = new List<string>();
 
             foreach (var messageItem in messageDataItems)
-                {
-                    string body = messageItem.Payload.Parts[0].Body.Data;
-                    String codedBody = body.Replace("-", "+");
-                    codedBody = codedBody.Replace("_", "/");
-                    byte[] data = Convert.FromBase64String(codedBody);
-                    body = Encoding.UTF8.GetString(data);
-                    messageBodies.Add(body);
-                }
+            {
+                string body = messageItem.Payload.Parts[0].Body.Data;
+                String codedBody = body.Replace("-", "+");
+                codedBody = codedBody.Replace("_", "/");
+                byte[] data = Convert.FromBase64String(codedBody);
+                body = Encoding.UTF8.GetString(data);
+                messageBodies.Add(body);
+            }
             return messageBodies;
         }
 
@@ -122,16 +122,18 @@ namespace SalesUpdater
             {
                 Email email = new Email();
 
-                string orderIDExpr = "Order: \\(#[0-9]+)";
+                string orderIDExpr = "Order: \\#([0-9]+)";
 
                 ShowMatch(message, orderIDExpr);
             }
         }
 
-        private static void ShowMatch(string text, string expr) 
+        private static void ShowMatch(string text, string expr)
         {
             Match m = Regex.Match(text, expr);
-            
+            Group g = m.Groups[1];
+            Console.WriteLine(g);
+
         }
     }
 }
