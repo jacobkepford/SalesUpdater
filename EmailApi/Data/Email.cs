@@ -1,4 +1,4 @@
-namespace SalesUpdater.Data
+namespace EmailApi.Data
 {
     public class Email
     {
