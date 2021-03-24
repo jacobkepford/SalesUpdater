@@ -123,16 +123,15 @@ namespace SalesUpdater
                 Email email = new Email();
 
                 string orderIDExpr = "Order: \\#([0-9]+)";
-
-                ShowMatch(message, orderIDExpr);
+                email.OrderNumber = ShowMatch(message, orderIDExpr);
             }
         }
 
-        private static void ShowMatch(string text, string expr)
+        private static string ShowMatch(string text, string expr)
         {
             Match m = Regex.Match(text, expr);
             Group g = m.Groups[1];
-            Console.WriteLine(g);
+            return g.To();
 
         }
     }
