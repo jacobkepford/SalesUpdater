@@ -107,12 +107,12 @@ namespace SalesUpdater
             foreach (var messageItem in messageDataItems)
             {
                 string body = messageItem.Payload.Parts[0].Body.Data;
-                String codedBody = body.Replace("-", "+");
+                string codedBody = body.Replace("-", "+");
                 codedBody = codedBody.Replace("_", "/");
                 byte[] data = Convert.FromBase64String(codedBody);
                 body = Encoding.UTF8.GetString(data);
-                string clean_body = body.Replace("\r\n", "");
-                messageBodies.Add(clean_body);
+                body = body.Replace("\r\n", "");
+                messageBodies.Add(body);
             }
             return messageBodies;
         }
@@ -130,6 +130,7 @@ namespace SalesUpdater
                 //Format and run regex search for product
                 string orderProductExpr = "Price(.*) [0-9] \\$";
                 email.Product = ShowMatch(message, orderProductExpr);
+                Console.WriteLine(email.Product);
 
             }
         }
