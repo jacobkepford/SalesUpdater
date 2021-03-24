@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 using EmailApi;
 using EmailApi.Data;
+
 
 namespace SalesUpdater
 {
