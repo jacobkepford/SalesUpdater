@@ -34,7 +34,7 @@ namespace SalesUpdater
             emailListRequest.LabelIds = emailService.Label;
 
             //Execute Email request to get all email metadata
-            List<Message> messageDataItems = emailService.GetEmails(emailService.Connection, emailListRequest);
+            List<Message> messageDataItems = emailService.GetEmails(emailListRequest);
 
             //Extract email body from each email
             List<string> messageBodies = emailService.GetMessageBodies(messageDataItems);

@@ -58,7 +58,7 @@ namespace EmailApi
         }
 
         // API Request to get Email and Email Metadata
-        public List<Message> GetEmails(GmailService service, UsersResource.MessagesResource.ListRequest emailListRequest)
+        public List<Message> GetEmails(UsersResource.MessagesResource.ListRequest emailListRequest)
         {
             List<Message> messageDataItems = new List<Message>();
 
@@ -69,7 +69,7 @@ namespace EmailApi
                 foreach (var message in messages)
                 {
                     //Format a new request to get email metadata
-                    var emailInfoRequest = service.Users.Messages.Get("me", message.Id);
+                    var emailInfoRequest = Connection.Users.Messages.Get("me", message.Id);
 
                     //Execute request for email metadata and add to list
                     Message emailData = emailInfoRequest.Execute();
