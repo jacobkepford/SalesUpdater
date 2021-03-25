@@ -25,16 +25,16 @@ namespace EmailApi
         {
             string[] scopes = { GmailService.Scope.GmailReadonly };
             string applicationName = "SalesUpdater";
-            
+
             UserCredential credential = GetCredentials(scopes);
-            
+
             Connection = new GmailService(new BaseClientService.Initializer()
-        {
-            HttpClientInitializer = credential,
-            ApplicationName = applicationName,
-        });
-            
-        
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = applicationName,
+            });
+
+
         }
 
 
@@ -42,7 +42,7 @@ namespace EmailApi
         {
             UserCredential credential;
             using (var stream =
-                new FileStream("F:\\Projects\\SalesUpdater\\credentials.json", FileMode.Open, FileAccess.Read))
+                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
@@ -108,7 +108,7 @@ namespace EmailApi
         {
             List<Email> emails = new List<Email>();
             EmailUtilities emailTools = new EmailUtilities();
-            
+
             foreach (var message in messageBodies)
             {
                 Email email = new Email();

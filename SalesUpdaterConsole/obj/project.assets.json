@@ -221,33 +221,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jacob\\.nuget\\packages\\": {}
+    "/Users/jacob/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\SalesUpdater\\SalesUpdaterConsole\\SalesUpdater.csproj",
+      "projectUniqueName": "/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/SalesUpdater.csproj",
       "projectName": "SalesUpdater",
-      "projectPath": "F:\\Projects\\SalesUpdater\\SalesUpdaterConsole\\SalesUpdater.csproj",
-      "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\SalesUpdater\\SalesUpdaterConsole\\obj\\",
+      "projectPath": "/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/SalesUpdater.csproj",
+      "packagesPath": "/Users/jacob/.nuget/packages/",
+      "outputPath": "/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Jacob\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/jacob/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\Projects\\SalesUpdater\\EmailApi\\EmailApi.csproj": {
-              "projectPath": "F:\\Projects\\SalesUpdater\\EmailApi\\EmailApi.csproj"
+            "/Users/jacob/Projects/SalesUpdater/EmailApi/EmailApi.csproj": {
+              "projectPath": "/Users/jacob/Projects/SalesUpdater/EmailApi/EmailApi.csproj"
             }
           }
         }
@@ -281,7 +283,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.407/RuntimeIdentifierGraph.json"
       }
     }
   }
