@@ -107,7 +107,6 @@ namespace EmailApi
         public List<Email> ExtractEmailData(List<string> messageBodies)
         {
             List<Email> emails = new List<Email>();
-            EmailUtilities emailTools = new EmailUtilities();
 
             foreach (var message in messageBodies)
             {
@@ -115,11 +114,11 @@ namespace EmailApi
 
                 //Format and run regex search for Order ID
                 string orderIDExpr = "Order: \\#([0-9]+)";
-                email.OrderNumber = emailTools.EmailSearch(message, orderIDExpr);
+                email.OrderNumber = EmailUtilities.EmailSearch(message, orderIDExpr);
 
                 //Format and run regex search for product
                 string orderProductExpr = "Price(.*) [0-9] \\$";
-                email.Product = emailTools.EmailSearch(message, orderProductExpr);
+                email.Product = EmailUtilities.EmailSearch(message, orderProductExpr);
                 Console.WriteLine(email.Product);
 
                 emails.Add(email);
