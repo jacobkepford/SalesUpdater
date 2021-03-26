@@ -86,7 +86,7 @@ namespace EmailApi
 
         }
 
-        //Pull email body from each email supplied
+        //Pull email body from each email supplied -Move for each to email utility
         public List<string> GetMessageBodies(List<Message> messageDataItems)
         {
             List<string> messageBodies = new List<string>();
