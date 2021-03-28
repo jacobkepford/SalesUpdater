@@ -58,7 +58,12 @@ namespace EmailApi.Utilities
                 //Format and run regex search for product
                 string orderProductExpr = "Price(.*) [0-9] \\$";
                 email.Product = EmailSearch(message, orderProductExpr);
-                Console.WriteLine(email.Product);
+                
+                //Format and run regex search for person who placed order
+                string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):";
+                email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
+
+                Console.WriteLine(email.OrderPerson);
 
                 emails.Add(email);
 
