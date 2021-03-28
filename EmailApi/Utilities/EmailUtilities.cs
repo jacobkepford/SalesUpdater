@@ -16,7 +16,7 @@ namespace EmailApi.Utilities
 {
     public static class EmailUtilities
     {
-        
+
         public static string EmailSearch(string text, string expr)
         {
             Match m = Regex.Match(text, expr);
@@ -58,12 +58,19 @@ namespace EmailApi.Utilities
                 //Format and run regex search for product
                 string orderProductExpr = "Price(.*) [0-9] \\$";
                 email.Product = EmailSearch(message, orderProductExpr);
-                
+
                 //Format and run regex search for person who placed order
                 string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):";
                 email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
 
-                Console.WriteLine(email.OrderPerson);
+                //Format and run regex search for date order was placed -- not working
+                string orderDateExpr = "\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product";
+                string emailOrderDate = EmailSearch(message, orderDateExpr);
+                string pattern = "([A-Z][a-z]+)([0-9]*,)";
+                string replacement = "$1" + " " + "$2";
+                email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
+
+                Console.WriteLine(email.OrderDate);
 
                 emails.Add(email);
 

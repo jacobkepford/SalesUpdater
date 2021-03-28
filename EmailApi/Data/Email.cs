@@ -1,3 +1,5 @@
+using System;
+
 namespace EmailApi.Data
 {
     public class Email
@@ -6,5 +8,6 @@ namespace EmailApi.Data
         public string Product { get; set; }
         public string Quantity { get; set; }
         public string OrderPerson { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 }
