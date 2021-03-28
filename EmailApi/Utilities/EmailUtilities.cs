@@ -10,6 +10,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using EmailApi.Data;
 
 namespace EmailApi.Utilities
 {
@@ -40,6 +41,30 @@ namespace EmailApi.Utilities
                 messageBodies.Add(body);
             }
             return messageBodies;
+        }
+        //Pulls key order data from supplied emails
+        public static List<Email> ExtractEmailData(List<string> messageBodies)
+        {
+            List<Email> emails = new List<Email>();
+
+            foreach (var message in messageBodies)
+            {
+                Email email = new Email();
+
+                //Format and run regex search for Order ID
+                string orderIDExpr = "Order: \\#([0-9]+)";
+                email.OrderNumber = EmailSearch(message, orderIDExpr);
+
+                //Format and run regex search for product
+                string orderProductExpr = "Price(.*) [0-9] \\$";
+                email.Product = EmailSearch(message, orderProductExpr);
+                Console.WriteLine(email.Product);
+
+                emails.Add(email);
+
+            }
+
+            return emails;
         }
     }
 }
