@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EmailApi;
 using EmailApi.Data;
+using EmailApi.Utilities;
 
 
 namespace SalesUpdater
@@ -21,7 +22,6 @@ namespace SalesUpdater
 
         static void Main(string[] args)
         {
-            
             
             EmailService emailService = new EmailService();
             
@@ -37,7 +37,7 @@ namespace SalesUpdater
             List<Message> messageDataItems = emailService.GetEmails(emailListRequest);
 
             //Extract email body from each email
-            List<string> messageBodies = emailService.GetMessageBodies(messageDataItems);
+            List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);
 
             //Extract key email data from each email body
             List<Email> emails = emailService.ExtractEmailData(messageBodies);

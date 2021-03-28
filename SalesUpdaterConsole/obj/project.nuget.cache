@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "pdEO6+MvxciHTLwBaf9DLjsUbKqJyeHBmOSjA6KAuCBTBMFPm3M/nJP5d7d91q0B64M8x3p/UM9Dt0aXAueKjw==",
+  "dgSpecHash": "4LQw+3X0aO6V/byEqUx5OwmyG7mFPIpwZGKdDgQJe5HuaPUVKEfOtxILb2yFvHbdZlBekusxFwR37cFtsvnKlA==",
   "success": true,
-  "projectFilePath": "F:\\Projects\\SalesUpdater\\SalesUpdaterConsole\\SalesUpdater.csproj",
+  "projectFilePath": "/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/SalesUpdater.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
-    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
-    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.core\\1.51.0\\google.apis.core.1.51.0.nupkg.sha512",
-    "C:\\Users\\Jacob\\.nuget\\packages\\google.apis.gmail.v1\\1.51.0.2251\\google.apis.gmail.v1.1.51.0.2251.nupkg.sha512",
-    "C:\\Users\\Jacob\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "/Users/jacob/.nuget/packages/google.apis/1.51.0/google.apis.1.51.0.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/google.apis.auth/1.51.0/google.apis.auth.1.51.0.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/google.apis.core/1.51.0/google.apis.core.1.51.0.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/google.apis.gmail.v1/1.51.0.2251/google.apis.gmail.v1.1.51.0.2251.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }

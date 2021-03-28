@@ -86,24 +86,6 @@ namespace EmailApi
 
         }
 
-        //Pull email body from each email supplied -Move for each to email utility
-        public List<string> GetMessageBodies(List<Message> messageDataItems)
-        {
-            List<string> messageBodies = new List<string>();
-
-            foreach (var messageItem in messageDataItems)
-            {
-                string body = messageItem.Payload.Parts[0].Body.Data;
-                string codedBody = body.Replace("-", "+");
-                codedBody = codedBody.Replace("_", "/");
-                byte[] data = Convert.FromBase64String(codedBody);
-                body = Encoding.UTF8.GetString(data);
-                body = body.Replace("\r\n", "");
-                messageBodies.Add(body);
-            }
-            return messageBodies;
-        }
-
         public List<Email> ExtractEmailData(List<string> messageBodies)
         {
             List<Email> emails = new List<Email>();
