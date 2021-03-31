@@ -8,6 +8,8 @@ namespace EmailApi.Data
         public string Product { get; set; }
         public string Quantity { get; set; }
         public string OrderPerson { get; set; }
+        public string EmailAddress { get; set; }
         public DateTime OrderDate { get; set; }
+
     }
 }

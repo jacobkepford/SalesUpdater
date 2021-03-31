@@ -63,14 +63,19 @@ namespace EmailApi.Utilities
                 string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):";
                 email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
 
-                //Format and run regex search for date order was placed -- not working
+                //Format and run regex search for date order was placed
                 string orderDateExpr = "\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product";
                 string emailOrderDate = EmailSearch(message, orderDateExpr);
                 string pattern = "([A-Z][a-z]+)([0-9]*,)";
                 string replacement = "$1" + " " + "$2";
                 email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
 
-                Console.WriteLine(email.OrderDate);
+                //Format and run regex search for email address
+                string emailAddressExpr = "[0-9]{10}>(.*@.*\\.com)";
+                email.EmailAddress = EmailSearch(message, emailAddressExpr);
+
+
+                Console.WriteLine(email.EmailAddress);
 
                 emails.Add(email);
 
