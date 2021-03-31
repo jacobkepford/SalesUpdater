@@ -40,7 +40,7 @@ namespace SalesUpdater
             List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);
 
             //Extract key email data from each email body
-            List<Email> emails = emailService.ExtractEmailData(messageBodies);
+            List<Email> emails = EmailUtilities.ExtractEmailData(messageBodies);
 
 
         }

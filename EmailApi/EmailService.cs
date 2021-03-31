@@ -86,29 +86,5 @@ namespace EmailApi
 
         }
 
-        public List<Email> ExtractEmailData(List<string> messageBodies)
-        {
-            List<Email> emails = new List<Email>();
-
-            foreach (var message in messageBodies)
-            {
-                Email email = new Email();
-
-                //Format and run regex search for Order ID
-                string orderIDExpr = "Order: \\#([0-9]+)";
-                email.OrderNumber = EmailUtilities.EmailSearch(message, orderIDExpr);
-
-                //Format and run regex search for product
-                string orderProductExpr = "Price(.*) [0-9] \\$";
-                email.Product = EmailUtilities.EmailSearch(message, orderProductExpr);
-                Console.WriteLine(email.Product);
-
-                emails.Add(email);
-
-            }
-
-            return emails;
-        }
-
     }
 }

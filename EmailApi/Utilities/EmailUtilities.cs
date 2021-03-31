@@ -10,12 +10,13 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using EmailApi.Data;
 
 namespace EmailApi.Utilities
 {
     public static class EmailUtilities
     {
-        
+
         public static string EmailSearch(string text, string expr)
         {
             Match m = Regex.Match(text, expr);
@@ -40,6 +41,59 @@ namespace EmailApi.Utilities
                 messageBodies.Add(body);
             }
             return messageBodies;
+        }
+        //Pulls key order data from supplied emails
+        public static List<Email> ExtractEmailData(List<string> messageBodies)
+        {
+            List<Email> emails = new List<Email>();
+
+            foreach (var message in messageBodies)
+            {
+                Email email = new Email();
+
+                //Format and run regex search for Order ID
+                string orderIDExpr = "Order: \\#([0-9]+)";
+                email.OrderNumber = EmailSearch(message, orderIDExpr);
+
+                //Format and run regex search for product
+                string orderProductExpr = "Price(.*) [0-9] \\$";
+                email.Product = EmailSearch(message, orderProductExpr);
+
+                //Format and run regex search for person who placed order
+                string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):";
+                email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
+
+                //Format and run regex search for date order was placed
+                string orderDateExpr = "\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product";
+                string emailOrderDate = EmailSearch(message, orderDateExpr);
+                string pattern = "([A-Z][a-z]+)([0-9]*,)";
+                string replacement = "$1" + " " + "$2";
+                email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
+
+                //Format and run regex search for email address
+                string emailAddressExpr = "[0-9]{10}>(.*@.*\\.com)";
+                email.EmailAddress = EmailSearch(message, emailAddressExpr);
+
+                //Format and run regex search for Payment Method
+                string paymentMethodExpr = "method: (.*)Total";
+                string payment = EmailSearch(message, paymentMethodExpr);
+
+                if (payment == "Credit Card")
+                {
+                    email.PaymentMethod = "Stripe";
+                }
+                else if (payment == "PayPal")
+                {
+                    email.PaymentMethod = "PayPal";
+                }
+
+                Console.WriteLine(email.PaymentMethod);
+
+                emails.Add(email);
+
+            }
+
+            return emails;
         }
     }
 }
