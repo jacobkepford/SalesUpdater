@@ -91,7 +91,6 @@ namespace EmailApi.Utilities
 
                 emails.Add(email);
 
-
             }
 
             return emails;
