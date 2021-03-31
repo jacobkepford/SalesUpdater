@@ -74,8 +74,20 @@ namespace EmailApi.Utilities
                 string emailAddressExpr = "[0-9]{10}>(.*@.*\\.com)";
                 email.EmailAddress = EmailSearch(message, emailAddressExpr);
 
+                //Format and run regex search for Payment Method
+                string paymentMethodExpr = "method: (.*)Total";
+                string payment = EmailSearch(message, paymentMethodExpr);
 
-                Console.WriteLine(email.EmailAddress);
+                if (payment == "Credit Card")
+                {
+                    email.PaymentMethod = "Stripe";
+                }
+                else if (payment == "PayPal")
+                {
+                    email.PaymentMethod = "PayPal";
+                }
+
+                Console.WriteLine(email.PaymentMethod);
 
                 emails.Add(email);
 
