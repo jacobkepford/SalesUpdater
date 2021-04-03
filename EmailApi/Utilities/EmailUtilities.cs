@@ -86,12 +86,22 @@ namespace EmailApi.Utilities
                 {
                     email.PaymentMethod = "PayPal";
                 }
+                else
+                {
+                    email.PaymentMethod = "Not Found";
+                }
 
-                Console.WriteLine(email.PaymentMethod);
+                //Format and run regex search for Subtotal
+                string subtotalExpr = "Subtotal: (\\$[0-9]*.[0-9]{2})Discount";
+                email.Subtotal = EmailSearch(message, subtotalExpr);
+
+                Console.WriteLine(email.Subtotal);
 
                 emails.Add(email);
 
             }
+
+
 
             return emails;
         }
