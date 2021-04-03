@@ -11,7 +11,10 @@ namespace EmailApi.Data
         public string EmailAddress { get; set; }
         public string PaymentMethod { get; set; }
         public string Subtotal { get; set; }
+        public string Total { get; set; }
         public DateTime OrderDate { get; set; }
+
+
 
 
     }

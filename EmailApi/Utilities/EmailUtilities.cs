@@ -92,10 +92,15 @@ namespace EmailApi.Utilities
                 }
 
                 //Format and run regex search for Subtotal
-                string subtotalExpr = "Subtotal: (\\$[0-9]*.[0-9]{2})Discount";
+                string subtotalExpr = "Subtotal: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Discount";
                 email.Subtotal = EmailSearch(message, subtotalExpr);
 
+                //Format and run regex for total
+                string totalExpr = "Total: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Order";
+                email.Total = EmailSearch(message, totalExpr);
+
                 Console.WriteLine(email.Subtotal);
+                Console.WriteLine(email.Total);
 
                 emails.Add(email);
 
