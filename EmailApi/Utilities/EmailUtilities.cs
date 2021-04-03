@@ -99,7 +99,8 @@ namespace EmailApi.Utilities
                 string totalExpr = "Total: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Order";
                 email.Total = EmailSearch(message, totalExpr);
 
-                Console.WriteLine(email.Subtotal);
+
+
                 Console.WriteLine(email.Total);
 
                 emails.Add(email);
