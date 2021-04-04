@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailApi", "EmailApi\EmailA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesUpdater", "SalesUpdaterConsole\SalesUpdater.csproj", "{C90041C1-B944-4A5D-9A84-63CB44BCC45A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetsApi", "SheetsApi\SheetsApi.csproj", "{8C15BF83-4927-4540-9CAA-53D06984A73C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{C90041C1-B944-4A5D-9A84-63CB44BCC45A}.Release|x64.Build.0 = Release|Any CPU
 		{C90041C1-B944-4A5D-9A84-63CB44BCC45A}.Release|x86.ActiveCfg = Release|Any CPU
 		{C90041C1-B944-4A5D-9A84-63CB44BCC45A}.Release|x86.Build.0 = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x64.Build.0 = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x86.Build.0 = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x64.ActiveCfg = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x64.Build.0 = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
