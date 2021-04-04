@@ -22,14 +22,15 @@ namespace SalesUpdater
 
         static void Main(string[] args)
         {
-            
+
             EmailService emailService = new EmailService();
-            
+
             //Set Label as "Orders"
             emailService.Label = "Label_6420272116865146";
 
             //Format a request to pull email id's
             UsersResource.MessagesResource.ListRequest emailListRequest = emailService.Connection.Users.Messages.List("me");
+
             //Add label to request
             emailListRequest.LabelIds = emailService.Label;
 
