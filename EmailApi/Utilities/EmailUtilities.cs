@@ -22,7 +22,6 @@ namespace EmailApi.Utilities
             Match m = Regex.Match(text, expr);
             Group g = m.Groups[1];
             return g.ToString();
-
         }
 
         //Pull email body from each email supplied
@@ -98,10 +97,6 @@ namespace EmailApi.Utilities
                 //Format and run regex for total
                 string totalExpr = "Total: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Order";
                 email.Total = EmailSearch(message, totalExpr);
-
-
-
-                Console.WriteLine(email.Total);
 
                 emails.Add(email);
 
