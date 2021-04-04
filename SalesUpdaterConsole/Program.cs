@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using EmailApi;
 using EmailApi.Data;
 using EmailApi.Utilities;
+using SheetsApi;
 
 
 namespace SalesUpdater
@@ -24,6 +25,7 @@ namespace SalesUpdater
         {
 
             EmailService emailService = new EmailService();
+            SheetService sheetService = new SheetService();
 
             //Set Label as "Orders"
             emailService.Label = "Label_6420272116865146";

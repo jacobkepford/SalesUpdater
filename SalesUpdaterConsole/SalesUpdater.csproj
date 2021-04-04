@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmailApi\EmailApi.csproj" />
+    <ProjectReference Include="..\SheetsApi\SheetsApi.csproj" />
   </ItemGroup>
 
 </Project>

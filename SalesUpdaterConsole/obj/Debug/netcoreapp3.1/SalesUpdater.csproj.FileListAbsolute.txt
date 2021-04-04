@@ -100,3 +100,6 @@ F:/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/EmailApi.dl
 F:/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/EmailApi.pdb
 F:/Projects/SalesUpdater/SalesUpdaterConsole/obj/Debug/netcoreapp3.1/SalesUpdater.csproj.CopyComplete
 F:/Projects/SalesUpdater/SalesUpdaterConsole/obj/Debug/netcoreapp3.1/SalesUpdater.genruntimeconfig.cache
+/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/Google.Apis.Sheets.v4.dll
+/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/SheetsApi.dll
+/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/SheetsApi.pdb

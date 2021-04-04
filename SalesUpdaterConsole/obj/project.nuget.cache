@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4LQw+3X0aO6V/byEqUx5OwmyG7mFPIpwZGKdDgQJe5HuaPUVKEfOtxILb2yFvHbdZlBekusxFwR37cFtsvnKlA==",
+  "dgSpecHash": "tYb4jrItxwuA1nywE0HYEcHL0/aMCCvOHw//KIWRcBcgExGXsO9+0nib1xVuPGHkxDZkK/+ymF8WeK2L2hsuMA==",
   "success": true,
   "projectFilePath": "/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/SalesUpdater.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/jacob/.nuget/packages/google.apis.auth/1.51.0/google.apis.auth.1.51.0.nupkg.sha512",
     "/Users/jacob/.nuget/packages/google.apis.core/1.51.0/google.apis.core.1.51.0.nupkg.sha512",
     "/Users/jacob/.nuget/packages/google.apis.gmail.v1/1.51.0.2251/google.apis.gmail.v1.1.51.0.2251.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/google.apis.sheets.v4/1.51.0.2272/google.apis.sheets.v4.1.51.0.2272.nupkg.sha512",
     "/Users/jacob/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []

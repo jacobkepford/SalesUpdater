@@ -9,7 +9,8 @@
       "SalesUpdater/1.0.0": {
         "dependencies": {
           "EmailApi": "1.0.0",
-          "Google.Apis.Gmail.v1": "1.51.0.2251"
+          "Google.Apis.Gmail.v1": "1.51.0.2251",
+          "SheetsApi": "1.0.0"
         },
         "runtime": {
           "SalesUpdater.dll": {}
@@ -65,6 +66,18 @@
           }
         }
       },
+      "Google.Apis.Sheets.v4/1.51.0.2272": {
+        "dependencies": {
+          "Google.Apis": "1.51.0",
+          "Google.Apis.Auth": "1.51.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Sheets.v4.dll": {
+            "assemblyVersion": "1.51.0.2272",
+            "fileVersion": "1.51.0.2272"
+          }
+        }
+      },
       "Newtonsoft.Json/12.0.3": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -79,6 +92,14 @@
         },
         "runtime": {
           "EmailApi.dll": {}
+        }
+      },
+      "SheetsApi/1.0.0": {
+        "dependencies": {
+          "Google.Apis.Sheets.v4": "1.51.0.2272"
+        },
+        "runtime": {
+          "SheetsApi.dll": {}
         }
       }
     }
@@ -117,6 +138,13 @@
       "path": "google.apis.gmail.v1/1.51.0.2251",
       "hashPath": "google.apis.gmail.v1.1.51.0.2251.nupkg.sha512"
     },
+    "Google.Apis.Sheets.v4/1.51.0.2272": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+j4r4ozoG4dxdNm85QnA5q6HBWRcmuX/U/M3R2xAr5VUTIjuFtc5y8M8Wv8BB1R1OnHzskT3gdwdyRDDZmRD0w==",
+      "path": "google.apis.sheets.v4/1.51.0.2272",
+      "hashPath": "google.apis.sheets.v4.1.51.0.2272.nupkg.sha512"
+    },
     "Newtonsoft.Json/12.0.3": {
       "type": "package",
       "serviceable": true,
@@ -125,6 +153,11 @@
       "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
     "EmailApi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SheetsApi/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

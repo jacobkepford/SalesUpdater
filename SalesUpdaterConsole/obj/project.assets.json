@@ -54,6 +54,19 @@
           "lib/netstandard2.0/Google.Apis.Gmail.v1.dll": {}
         }
       },
+      "Google.Apis.Sheets.v4/1.51.0.2272": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.51.0",
+          "Google.Apis.Auth": "1.51.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Sheets.v4.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Sheets.v4.dll": {}
+        }
+      },
       "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
@@ -74,6 +87,19 @@
         },
         "runtime": {
           "bin/placeholder/EmailApi.dll": {}
+        }
+      },
+      "SheetsApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Google.Apis.Sheets.v4": "1.51.0.2272"
+        },
+        "compile": {
+          "bin/placeholder/SheetsApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SheetsApi.dll": {}
         }
       }
     }
@@ -177,6 +203,34 @@
         "lib/netstandard2.0/Google.Apis.Gmail.v1.xml"
       ]
     },
+    "Google.Apis.Sheets.v4/1.51.0.2272": {
+      "sha512": "+j4r4ozoG4dxdNm85QnA5q6HBWRcmuX/U/M3R2xAr5VUTIjuFtc5y8M8Wv8BB1R1OnHzskT3gdwdyRDDZmRD0w==",
+      "type": "package",
+      "path": "google.apis.sheets.v4/1.51.0.2272",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.sheets.v4.1.51.0.2272.nupkg.sha512",
+        "google.apis.sheets.v4.nuspec",
+        "lib/net40/Google.Apis.Sheets.v4.dll",
+        "lib/net40/Google.Apis.Sheets.v4.pdb",
+        "lib/net40/Google.Apis.Sheets.v4.xml",
+        "lib/net45/Google.Apis.Sheets.v4.dll",
+        "lib/net45/Google.Apis.Sheets.v4.pdb",
+        "lib/net45/Google.Apis.Sheets.v4.xml",
+        "lib/netstandard1.0/Google.Apis.Sheets.v4.dll",
+        "lib/netstandard1.0/Google.Apis.Sheets.v4.pdb",
+        "lib/netstandard1.0/Google.Apis.Sheets.v4.xml",
+        "lib/netstandard1.3/Google.Apis.Sheets.v4.dll",
+        "lib/netstandard1.3/Google.Apis.Sheets.v4.pdb",
+        "lib/netstandard1.3/Google.Apis.Sheets.v4.xml",
+        "lib/netstandard2.0/Google.Apis.Sheets.v4.dll",
+        "lib/netstandard2.0/Google.Apis.Sheets.v4.pdb",
+        "lib/netstandard2.0/Google.Apis.Sheets.v4.xml"
+      ]
+    },
     "Newtonsoft.Json/12.0.3": {
       "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
@@ -212,12 +266,18 @@
       "type": "project",
       "path": "../EmailApi/EmailApi.csproj",
       "msbuildProject": "../EmailApi/EmailApi.csproj"
+    },
+    "SheetsApi/1.0.0": {
+      "type": "project",
+      "path": "../SheetsApi/SheetsApi.csproj",
+      "msbuildProject": "../SheetsApi/SheetsApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "EmailApi >= 1.0.0",
-      "Google.Apis.Gmail.v1 >= 1.51.0.2251"
+      "Google.Apis.Gmail.v1 >= 1.51.0.2251",
+      "SheetsApi >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -250,6 +310,9 @@
           "projectReferences": {
             "/Users/jacob/Projects/SalesUpdater/EmailApi/EmailApi.csproj": {
               "projectPath": "/Users/jacob/Projects/SalesUpdater/EmailApi/EmailApi.csproj"
+            },
+            "/Users/jacob/Projects/SalesUpdater/SheetsApi/SheetsApi.csproj": {
+              "projectPath": "/Users/jacob/Projects/SalesUpdater/SheetsApi/SheetsApi.csproj"
             }
           }
         }
