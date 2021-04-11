@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using EmailApi.Data;
 
 namespace SheetsApi
 {
@@ -74,7 +73,7 @@ namespace SheetsApi
             }
         }
 
-        public void CreateEntry(List<Email> emails)
+        public void CreateEntry()
         {
             var range = $"{Sheet}!A:I";
             var valueRange = new ValueRange();
