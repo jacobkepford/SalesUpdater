@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using EmailApi.Data;
 
 namespace SheetsApi
 {
@@ -73,12 +74,13 @@ namespace SheetsApi
             }
         }
 
-        public void CreateEntry()
+        public void CreateEntry(Email email)
         {
             var range = $"{Sheet}!A:I";
             var valueRange = new ValueRange();
 
-            var oblist = new List<object>() { "Hello!", "This", "was", "insertd", "via", "C#" };
+            var oblist = new List<object>() { email.OrderNumber, email.Product, email.Quantity, email.OrderPerson, email.EmailAddress, email.PaymentMethod, email.Subtotal, email.Total };
+
             valueRange.Values = new List<IList<object>> { oblist };
 
             var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, range);

@@ -49,7 +49,7 @@ namespace SalesUpdater
             sheetService.SpreadsheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
             sheetService.Sheet = "Sales";
 
-            sheetService.ReadEntries();
+            sheetService.CreateEntry(emails[0]);
 
         }
 

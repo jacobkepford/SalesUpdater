@@ -152,7 +152,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/jacob/Projects/SalesUpdater/EmailApi/EmailApi.csproj": {
+                "projectPath": "/Users/jacob/Projects/SalesUpdater/EmailApi/EmailApi.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

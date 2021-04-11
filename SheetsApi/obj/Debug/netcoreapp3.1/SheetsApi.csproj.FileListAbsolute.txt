@@ -7,3 +7,6 @@
 /Users/jacob/Projects/SalesUpdater/SheetsApi/obj/Debug/netcoreapp3.1/SheetsApi.csproj.CoreCompileInputs.cache
 /Users/jacob/Projects/SalesUpdater/SheetsApi/obj/Debug/netcoreapp3.1/SheetsApi.dll
 /Users/jacob/Projects/SalesUpdater/SheetsApi/obj/Debug/netcoreapp3.1/SheetsApi.pdb
+/Users/jacob/Projects/SalesUpdater/SheetsApi/bin/Debug/netcoreapp3.1/EmailApi.dll
+/Users/jacob/Projects/SalesUpdater/SheetsApi/bin/Debug/netcoreapp3.1/EmailApi.pdb
+/Users/jacob/Projects/SalesUpdater/SheetsApi/obj/Debug/netcoreapp3.1/SheetsApi.csproj.CopyComplete

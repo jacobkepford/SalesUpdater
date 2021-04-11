@@ -96,6 +96,7 @@
       },
       "SheetsApi/1.0.0": {
         "dependencies": {
+          "EmailApi": "1.0.0",
           "Google.Apis.Sheets.v4": "1.51.0.2272"
         },
         "runtime": {
