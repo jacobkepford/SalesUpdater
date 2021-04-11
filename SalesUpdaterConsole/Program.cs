@@ -45,6 +45,11 @@ namespace SalesUpdater
             //Extract key email data from each email body
             List<Email> emails = EmailUtilities.ExtractEmailData(messageBodies);
 
+            //Initializing Google Sheet Information
+            sheetService.SpreadsheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
+            sheetService.Sheet = "Sales";
+
+            sheetService.ReadEntries();
 
         }
 
