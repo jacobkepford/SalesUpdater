@@ -84,7 +84,7 @@ namespace SheetsApi
 
             string rowID = GetNextID();
 
-            var oblist = new List<object>() { rowID, email.OrderPerson, email.OrderDate.ToString("MM-dd-yyyy"), email.OrderNumber, email.Product, email.Quantity, email.EmailAddress, email.PaymentMethod, email.Subtotal, email.Total };
+            var oblist = new List<object>() { rowID, email.OrderPerson, email.OrderDate.ToString("MM-dd-yyyy"), email.EmailAddress, email.PaymentMethod, email.OrderNumber, email.Product, email.Quantity, email.Subtotal, email.Total };
 
             valueRange.Values = new List<IList<object>> { oblist };
 
