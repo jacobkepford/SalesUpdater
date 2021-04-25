@@ -17,6 +17,8 @@ namespace SheetsApi
         public string SpreadsheetID { get; set; }
         public string Sheet { get; set; }
         public string Range { get; set; }
+
+        //Intializes new service with credentials and API connection
         public SheetService()
         {
             string[] scopes = { SheetsService.Scope.Spreadsheets };
@@ -31,7 +33,7 @@ namespace SheetsApi
                 ApplicationName = applicationName,
             });
         }
-
+        //Gets the credentials to use for the service
         private UserCredential GetCredentials(string[] scopes)
         {
             UserCredential credential;
@@ -52,7 +54,7 @@ namespace SheetsApi
             return credential;
 
         }
-
+        //Method set up for testing reading values from Google Sheet
         public void ReadEntries()
         {
             var workingRange = $"{Sheet}!{Range}";
@@ -74,7 +76,7 @@ namespace SheetsApi
                 Console.WriteLine("No data found.");
             }
         }
-
+        //Writes a new row into the Google Sheet
         public void CreateEntry(Email email)
         {
             var workingRange = $"{Sheet}!{Range}";
