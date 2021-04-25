@@ -16,6 +16,7 @@ namespace SheetsApi
         public SheetsService Connection { get; set; }
         public string SpreadsheetID { get; set; }
         public string Sheet { get; set; }
+        public string Range { get; set; }
         public SheetService()
         {
             string[] scopes = { SheetsService.Scope.Spreadsheets };
@@ -54,9 +55,9 @@ namespace SheetsApi
 
         public void ReadEntries()
         {
-            var range = $"{Sheet}!A:F";
+            var workingRange = $"{Sheet}!{Range}";
             SpreadsheetsResource.ValuesResource.GetRequest request =
-                    Connection.Spreadsheets.Values.Get(SpreadsheetID, range);
+                    Connection.Spreadsheets.Values.Get(SpreadsheetID, workingRange);
 
             var response = request.Execute();
             IList<IList<object>> values = response.Values;
@@ -76,14 +77,14 @@ namespace SheetsApi
 
         public void CreateEntry(Email email)
         {
-            var range = $"{Sheet}!A:H";
+            var workingRange = $"{Sheet}!{Range}";
             var valueRange = new ValueRange();
 
             var oblist = new List<object>() { email.OrderNumber, email.Product, email.Quantity, email.OrderPerson, email.EmailAddress, email.PaymentMethod, email.Subtotal, email.Total };
 
             valueRange.Values = new List<IList<object>> { oblist };
 
-            var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, range);
+            var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, workingRange);
             appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
             var appendReponse = appendRequest.Execute();
         }
