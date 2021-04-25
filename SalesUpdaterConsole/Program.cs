@@ -50,6 +50,7 @@ namespace SalesUpdater
             sheetService.Sheet = "Sales";
             sheetService.Range = "A:J";
 
+            //Will need to be updated to for each to account for multiple emails
             sheetService.CreateEntry(emails[0]);
 
         }
