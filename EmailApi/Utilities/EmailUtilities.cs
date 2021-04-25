@@ -55,8 +55,12 @@ namespace EmailApi.Utilities
                 email.OrderNumber = EmailSearch(message, orderIDExpr);
 
                 //Format and run regex search for product
-                string orderProductExpr = "Price(.*) [0-9] \\$";
+                string orderProductExpr = "Price(.*) [\\d]* \\$";
                 email.Product = EmailSearch(message, orderProductExpr);
+
+                //Format and run regex search for Quantity
+                string orderQuantity = "Price.* ([\\d]*) \\$";
+                email.Quantity = EmailSearch(message, orderQuantity);
 
                 //Format and run regex search for person who placed order
                 string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):";
