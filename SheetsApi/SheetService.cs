@@ -80,13 +80,34 @@ namespace SheetsApi
             var workingRange = $"{Sheet}!{Range}";
             var valueRange = new ValueRange();
 
-            var oblist = new List<object>() { email.OrderNumber, email.Product, email.Quantity, email.OrderPerson, email.EmailAddress, email.PaymentMethod, email.Subtotal, email.Total };
+            string rowID = GetNextID();
+
+            var oblist = new List<object>() { rowID, email.OrderNumber, email.Product, email.Quantity, email.OrderPerson, email.EmailAddress, email.PaymentMethod, email.Subtotal, email.Total };
 
             valueRange.Values = new List<IList<object>> { oblist };
 
             var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, workingRange);
             appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
             var appendReponse = appendRequest.Execute();
+        }
+
+        //Finds the next SheetID to use for inserting a new record
+        private string GetNextID()
+        {
+            var workingRange = $"{Sheet}!{Range}";
+            SpreadsheetsResource.ValuesResource.GetRequest request =
+                    Connection.Spreadsheets.Values.Get(SpreadsheetID, workingRange);
+
+            var response = request.Execute();
+            IList<IList<object>> values = response.Values;
+            if (values != null && values.Count > 1)
+            {
+                //Returns the last ID entered into the spreadsheet. Adding 1 to increment
+                int currentLastID = Convert.ToInt32(values[values.Count - 1][0]);
+                string nextID = (currentLastID + 1).ToString();
+                return nextID;
+            }
+            return "1";
         }
     }
 }
