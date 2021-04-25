@@ -4,7 +4,7 @@ I'm building a simple Console Application that will connect to the Google Gmail 
 
 ### Prerequisites
 
-Google.Apis.Gmail.v1 Nuget Package
+Google.Apis.Gmail.v1 Nuget Package <br>
 Google.Apis.Sheets.v4 Nuget Package
 
 ## Built With
