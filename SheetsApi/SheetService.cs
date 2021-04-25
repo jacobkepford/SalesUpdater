@@ -76,7 +76,7 @@ namespace SheetsApi
 
         public void CreateEntry(Email email)
         {
-            var range = $"{Sheet}!A:I";
+            var range = $"{Sheet}!A:H";
             var valueRange = new ValueRange();
 
             var oblist = new List<object>() { email.OrderNumber, email.Product, email.Quantity, email.OrderPerson, email.EmailAddress, email.PaymentMethod, email.Subtotal, email.Total };
