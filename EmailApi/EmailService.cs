@@ -23,7 +23,7 @@ namespace EmailApi
 
         public EmailService()
         {
-            string[] scopes = { GmailService.Scope.GmailReadonly };
+            string[] scopes = { GmailService.Scope.GmailModify };
             string applicationName = "SalesUpdater";
 
             UserCredential credential = GetCredentials(scopes);
