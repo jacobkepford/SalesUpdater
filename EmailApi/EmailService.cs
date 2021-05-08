@@ -63,30 +63,38 @@ namespace EmailApi
         {
             List<Message> messageDataItems = new List<Message>();
 
-            //Format a request to pull email id's
-            UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
-
-            //Add label to request
-            emailListRequest.LabelIds = Label;
-
             //Execute get email API request and save to list
-            IList<Message> messages = emailListRequest.Execute().Messages;
-            if (messages != null && messages.Count > 0)
+            try
             {
-                foreach (var message in messages)
-                {
-                    //Format a new request to get email metadata
-                    var emailInfoRequest = Connection.Users.Messages.Get("me", message.Id);
+                //Format a request to pull email id's
+                UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
 
-                    //Execute request for email metadata and add to list
-                    Message emailData = emailInfoRequest.Execute();
-                    messageDataItems.Add(emailData);
+                //Add label to request
+                emailListRequest.LabelIds = Label;
+
+                IList<Message> messages = emailListRequest.Execute().Messages;
+                if (messages != null && messages.Count > 0)
+                {
+                    foreach (var message in messages)
+                    {
+                        //Format a new request to get email metadata
+                        var emailInfoRequest = Connection.Users.Messages.Get("me", message.Id);
+
+                        //Execute request for email metadata and add to list
+                        Message emailData = emailInfoRequest.Execute();
+                        messageDataItems.Add(emailData);
+                    }
+                }
+                else
+                {
+                    return messageDataItems;
                 }
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("No messages found.");
+                Console.WriteLine(e.Message);
             }
+
             return messageDataItems;
 
         }

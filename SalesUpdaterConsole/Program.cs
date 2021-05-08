@@ -33,6 +33,14 @@ namespace SalesUpdater
             //Execute Email request to get all email metadata
             List<Message> messageDataItems = emailService.GetEmails();
 
+            if (messageDataItems == null || messageDataItems.Count == 0)
+            {
+                Console.WriteLine("No emails were found");
+                return;
+            }
+
+
+            Console.WriteLine("Continuing");
             //Extract email body from each email
             List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);
 
