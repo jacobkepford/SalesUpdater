@@ -86,13 +86,22 @@ namespace EmailApi
 
         }
 
-        public void MoveEmail(string messageDataId)
+        public void MoveEmail(string messageDataId, string newLabel)
         {
-            List<string> lableIds = new List<string>();
-            lableIds.Add(Label);
-            ModifyMessageRequest mods = new ModifyMessageRequest();
-            mods.RemoveLabelIds = lableIds;
+            List<string> addLableIds = new List<string>();
+            List<string> removeLableIds = new List<string>();
+            //Label the email originated from
+            removeLableIds.Add(Label);
 
+            //Label the email should be  moved to
+            addLableIds.Add(newLabel);
+
+            //Write the body of the request to add/remove label
+            ModifyMessageRequest mods = new ModifyMessageRequest();
+            mods.RemoveLabelIds = removeLableIds;
+            mods.AddLabelIds = addLableIds;
+
+            //Format/execute the full request to move the email properly
             UsersResource.MessagesResource.ModifyRequest moveEmailRequest = Connection.Users.Messages.Modify(mods, "me", messageDataId);
             moveEmailRequest.Execute();
         }
