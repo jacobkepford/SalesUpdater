@@ -33,6 +33,7 @@ namespace SheetsApi
                 ApplicationName = applicationName,
             });
         }
+
         //Gets the credentials to use for the service
         private UserCredential GetCredentials(string[] scopes)
         {
@@ -54,6 +55,7 @@ namespace SheetsApi
             return credential;
 
         }
+
         //Method set up for testing reading values from Google Sheet
         public void ReadEntries()
         {
@@ -76,6 +78,7 @@ namespace SheetsApi
                 Console.WriteLine("No data found.");
             }
         }
+
         //Writes a new row into the Google Sheet
         public void CreateEntry(Email email)
         {

@@ -37,7 +37,6 @@ namespace EmailApi
 
         }
 
-
         private static UserCredential GetCredentials(string[] scopes)
         {
             UserCredential credential;
@@ -58,7 +57,6 @@ namespace EmailApi
             return credential;
 
         }
-
 
         // API Request to get Email and Email Metadata
         public List<Message> GetEmails()
