@@ -86,5 +86,16 @@ namespace EmailApi
 
         }
 
+        public void MoveEmail(string messageDataId)
+        {
+            List<string> lableIds = new List<string>();
+            lableIds.Add(Label);
+            ModifyMessageRequest mods = new ModifyMessageRequest();
+            mods.RemoveLabelIds = lableIds;
+
+            UsersResource.MessagesResource.ModifyRequest moveEmailRequest = Connection.Users.Messages.Modify(mods, "me", messageDataId);
+            moveEmailRequest.Execute();
+        }
+
     }
 }

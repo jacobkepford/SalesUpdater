@@ -53,14 +53,9 @@ namespace SalesUpdater
             //Will need to be updated to for each to account for multiple emails
             sheetService.CreateEntry(emails[0]);
 
-            //Request to modify email label at the end, move to email service
-            List<string> lableIds = new List<string>();
-            lableIds.Add(emailService.Label);
-            ModifyMessageRequest mods = new ModifyMessageRequest();
-            mods.RemoveLabelIds = lableIds;
+            //Request to modify email label at the end
+            emailService.MoveEmail(messageDataItems[0].Id);
 
-            UsersResource.MessagesResource.ModifyRequest moveEmailRequest = emailService.Connection.Users.Messages.Modify(mods, "me", messageDataItems[0].Id);
-            moveEmailRequest.Execute();
 
         }
 
