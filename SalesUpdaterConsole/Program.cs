@@ -30,14 +30,8 @@ namespace SalesUpdater
             //Set Label as "Orders"
             emailService.Label = "Label_6420272116865146";
 
-            //Format a request to pull email id's
-            UsersResource.MessagesResource.ListRequest emailListRequest = emailService.Connection.Users.Messages.List("me");
-
-            //Add label to request
-            emailListRequest.LabelIds = emailService.Label;
-
             //Execute Email request to get all email metadata
-            List<Message> messageDataItems = emailService.GetEmails(emailListRequest);
+            List<Message> messageDataItems = emailService.GetEmails();
 
             //Extract email body from each email
             List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);

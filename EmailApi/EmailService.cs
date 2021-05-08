@@ -59,10 +59,17 @@ namespace EmailApi
 
         }
 
+
         // API Request to get Email and Email Metadata
-        public List<Message> GetEmails(UsersResource.MessagesResource.ListRequest emailListRequest)
+        public List<Message> GetEmails()
         {
             List<Message> messageDataItems = new List<Message>();
+
+            //Format a request to pull email id's
+            UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
+
+            //Add label to request
+            emailListRequest.LabelIds = Label;
 
             //Execute get email API request and save to list
             IList<Message> messages = emailListRequest.Execute().Messages;
