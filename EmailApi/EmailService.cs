@@ -70,7 +70,7 @@ namespace EmailApi
                 UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
 
                 //Add label to request
-                emailListRequest.LabelIds = "labeld";
+                emailListRequest.LabelIds = Label;
 
                 IList<Message> messages = emailListRequest.Execute().Messages;
                 if (messages != null && messages.Count > 0)
@@ -109,14 +109,23 @@ namespace EmailApi
             //Label the email should be  moved to
             addLableIds.Add(newLabel);
 
-            //Write the body of the request to add/remove label
-            ModifyMessageRequest mods = new ModifyMessageRequest();
-            mods.RemoveLabelIds = removeLableIds;
-            mods.AddLabelIds = addLableIds;
+            try
+            {
+                //Write the body of the request to add/remove label
+                ModifyMessageRequest mods = new ModifyMessageRequest();
+                mods.RemoveLabelIds = removeLableIds;
+                mods.AddLabelIds = addLableIds;
 
-            //Format/execute the full request to move the email properly
-            UsersResource.MessagesResource.ModifyRequest moveEmailRequest = Connection.Users.Messages.Modify(mods, "me", messageDataId);
-            moveEmailRequest.Execute();
+                //Format/execute the full request to move the email properly
+                UsersResource.MessagesResource.ModifyRequest moveEmailRequest = Connection.Users.Messages.Modify(mods, "me", messageDataId);
+                moveEmailRequest.Execute();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
         }
 
     }

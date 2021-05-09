@@ -39,8 +39,6 @@ namespace SalesUpdater
                 return;
             }
 
-
-            Console.WriteLine("Continuing");
             //Extract email body from each email
             List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);
 
