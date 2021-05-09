@@ -50,21 +50,35 @@ namespace SalesUpdater
             sheetService.Sheet = "Sales";
             sheetService.Range = "A:J";
 
-            //Writes email data to google sheet
+            //"Processed" label id
+            string newLabel = "Label_5885438401785530646";
+
+            //Count to keep track of current email id
+            int emailCount = 0;
+
+            //Count to keep track of failures
+            int failCount = 0;
+
+
             foreach (Email email in emails)
             {
-                sheetService.CreateEntry(email);
+                //Writes email data to google sheet
+                string result = sheetService.CreateEntry(email);
+
+                //Check to verify that sheet entry was added properly
+                if (result == "Success")
+                {
+                    emailService.MoveEmail(messageDataItems[emailCount].Id, newLabel);
+                }
+                else
+                {
+                    failCount++;
+                }
+
+                emailCount++;
             }
 
-
-            //Request to move email to proceesed. Adding "processed" label id
-            string newLabel = "Label_5885438401785530646";
-            foreach (Message message in messageDataItems)
-            {
-                emailService.MoveEmail(message.Id, newLabel);
-            }
-
-            Console.WriteLine("All emails have been processed");
+            Console.WriteLine($"All emails have been processed with {failCount} error(s).");
 
         }
 

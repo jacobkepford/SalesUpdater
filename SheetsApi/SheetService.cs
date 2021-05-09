@@ -80,20 +80,36 @@ namespace SheetsApi
         }
 
         //Writes a new row into the Google Sheet
-        public void CreateEntry(Email email)
+        public string CreateEntry(Email email)
         {
-            var workingRange = $"{Sheet}!{Range}";
-            var valueRange = new ValueRange();
+            string result = "";
 
-            string rowID = GetNextID();
+            try
+            {
+                var workingRange = $"{Sheet}!{Range}";
+                var valueRange = new ValueRange();
 
-            var oblist = new List<object>() { rowID, email.OrderPerson, email.OrderDate.ToString("MM-dd-yyyy"), email.EmailAddress, email.PaymentMethod, email.OrderNumber, email.Product, email.Quantity, email.Subtotal, email.Total };
+                string rowID = GetNextID();
 
-            valueRange.Values = new List<IList<object>> { oblist };
+                var oblist = new List<object>() { rowID, email.OrderPerson, email.OrderDate.ToString("MM-dd-yyyy"), email.EmailAddress, email.PaymentMethod, email.OrderNumber, email.Product, email.Quantity, email.Subtotal, email.Total };
 
-            var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, workingRange);
-            appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
-            var appendReponse = appendRequest.Execute();
+                valueRange.Values = new List<IList<object>> { oblist };
+
+                var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, workingRange);
+                appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
+                var appendReponse = appendRequest.Execute();
+
+                result = "Success";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine($"Unable to process Order #: {email.OrderNumber}");
+                result = "Fail";
+            }
+
+            return result;
+
         }
 
         //Finds the next SheetID to use for inserting a new record
