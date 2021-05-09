@@ -64,7 +64,7 @@ namespace SalesUpdater
                 emailService.MoveEmail(message.Id, newLabel);
             }
 
-
+            Console.WriteLine("All emails have been processed");
 
         }
 

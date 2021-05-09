@@ -85,10 +85,7 @@ namespace EmailApi
                         messageDataItems.Add(emailData);
                     }
                 }
-                else
-                {
-                    return messageDataItems;
-                }
+
             }
             catch (Exception e)
             {
