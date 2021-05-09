@@ -70,7 +70,7 @@ namespace EmailApi
                 UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
 
                 //Add label to request
-                emailListRequest.LabelIds = Label;
+                emailListRequest.LabelIds = "labeld";
 
                 IList<Message> messages = emailListRequest.Execute().Messages;
                 if (messages != null && messages.Count > 0)
