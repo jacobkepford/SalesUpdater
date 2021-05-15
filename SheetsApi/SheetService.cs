@@ -115,20 +115,29 @@ namespace SheetsApi
         //Finds the next SheetID to use for inserting a new record
         private string GetNextID()
         {
-            var workingRange = $"{Sheet}!{Range}";
-            SpreadsheetsResource.ValuesResource.GetRequest request =
-                    Connection.Spreadsheets.Values.Get(SpreadsheetID, workingRange);
-
-            var response = request.Execute();
-            IList<IList<object>> values = response.Values;
-            if (values != null && values.Count > 1)
+            try
             {
-                //Returns the last ID entered into the spreadsheet. Adding 1 to increment
-                int currentLastID = Convert.ToInt32(values[values.Count - 1][0]);
-                string nextID = (currentLastID + 1).ToString();
-                return nextID;
+                var workingRange = $"{Sheet}!{Range}";
+                SpreadsheetsResource.ValuesResource.GetRequest request =
+                        Connection.Spreadsheets.Values.Get(SpreadsheetID, workingRange);
+
+                var response = request.Execute();
+                IList<IList<object>> values = response.Values;
+                if (values != null && values.Count > 1)
+                {
+                    //Returns the last ID entered into the spreadsheet. Adding 1 to increment
+                    int currentLastID = Convert.ToInt32(values[values.Count - 1][0]);
+                    string nextID = (currentLastID + 1).ToString();
+                    return nextID;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
             return "1";
+
         }
     }
 }
