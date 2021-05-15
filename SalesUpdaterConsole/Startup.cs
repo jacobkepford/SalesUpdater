@@ -1,0 +1,20 @@
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using EmailApi;
+using SheetsApi;
+
+namespace SalesUpdaterConsole
+{
+    public static class Startup
+    {
+        public static IServiceProvider ConfigureService()
+        {
+            var provider = new ServiceCollection()
+                                .AddSingleton<IEmailService, EmailService>()
+                                .AddSingleton<ISheetService, SheetService>()
+                                .BuildServiceProvider();
+
+            return provider;
+        }
+    }
+}

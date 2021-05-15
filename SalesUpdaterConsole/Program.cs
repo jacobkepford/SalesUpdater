@@ -14,24 +14,28 @@ using EmailApi;
 using EmailApi.Data;
 using EmailApi.Utilities;
 using SheetsApi;
+using SheetsApi.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 
-namespace SalesUpdater
+namespace SalesUpdaterConsole
 {
     class Program
     {
 
         static void Main(string[] args)
         {
+            //Create instance of Email / Sheet Service through Dependency Injection
+            var container = Startup.ConfigureService();
+            var emailService = container.GetRequiredService<IEmailService>();
+            var sheetService = container.GetRequiredService<ISheetService>();
 
-            EmailService emailService = new EmailService();
-            SheetService sheetService = new SheetService();
-
-            //Set Label as "Orders"
-            emailService.Label = "Label_6420272116865146";
+            //Set order and processed labels
+            string orderLabel = "Label_6420272116865146";
+            string processedLabel = "Label_5885438401785530646";
 
             //Execute Email request to get all email metadata
-            List<Message> messageDataItems = emailService.GetEmails();
+            List<Message> messageDataItems = emailService.GetEmails(orderLabel);
 
             if (messageDataItems == null || messageDataItems.Count == 0)
             {
@@ -46,12 +50,11 @@ namespace SalesUpdater
             List<Email> emails = EmailUtilities.ExtractEmailData(messageBodies);
 
             //Initializing Google Sheet Information
-            sheetService.SpreadsheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
-            sheetService.Sheet = "Sales";
-            sheetService.Range = "A:J";
-
-            //"Processed" label id
-            string newLabel = "Label_5885438401785530646";
+            Worksheet sheet = new Worksheet();
+            sheet.WorksheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
+            sheet.Name = "Sales";
+            sheet.Range = "A:J";
+            sheet.WorkingRange = $"{sheet.Name}!{sheet.Range}";
 
             //Count to keep track of current email id
             int emailCount = 0;
@@ -63,12 +66,12 @@ namespace SalesUpdater
             foreach (Email email in emails)
             {
                 //Writes email data to google sheet
-                string result = sheetService.CreateEntry(email);
+                string result = sheetService.CreateEntry(email, sheet);
 
                 //Check to verify that sheet entry was added properly
                 if (result == "Success")
                 {
-                    emailService.MoveEmail(messageDataItems[emailCount].Id, newLabel);
+                    emailService.MoveEmail(messageDataItems[emailCount].Id, orderLabel, processedLabel);
                 }
                 else
                 {

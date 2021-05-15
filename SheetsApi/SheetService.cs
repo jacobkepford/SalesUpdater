@@ -8,15 +8,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using EmailApi.Data;
+using SheetsApi.Data;
 
 namespace SheetsApi
 {
-    public class SheetService
+    public class SheetService : ISheetService
     {
         public SheetsService Connection { get; set; }
-        public string SpreadsheetID { get; set; }
-        public string Sheet { get; set; }
-        public string Range { get; set; }
 
         //Intializes new service with credentials and API connection
         public SheetService()
@@ -35,7 +33,7 @@ namespace SheetsApi
         }
 
         //Gets the credentials to use for the service
-        private UserCredential GetCredentials(string[] scopes)
+        public UserCredential GetCredentials(string[] scopes)
         {
             UserCredential credential;
             using (var stream =
@@ -57,11 +55,10 @@ namespace SheetsApi
         }
 
         //Method set up for testing reading values from Google Sheet
-        public void ReadEntries()
+        public void ReadEntries(Worksheet sheet)
         {
-            var workingRange = $"{Sheet}!{Range}";
             SpreadsheetsResource.ValuesResource.GetRequest request =
-                    Connection.Spreadsheets.Values.Get(SpreadsheetID, workingRange);
+                    Connection.Spreadsheets.Values.Get(sheet.WorksheetID, sheet.WorkingRange);
 
             var response = request.Execute();
             IList<IList<object>> values = response.Values;
@@ -80,22 +77,21 @@ namespace SheetsApi
         }
 
         //Writes a new row into the Google Sheet
-        public string CreateEntry(Email email)
+        public string CreateEntry(Email email, Worksheet sheet)
         {
             string result = "";
 
             try
             {
-                var workingRange = $"{Sheet}!{Range}";
                 var valueRange = new ValueRange();
 
-                string rowID = GetNextID();
+                string rowID = GetNextID(sheet);
 
                 var oblist = new List<object>() { rowID, email.OrderPerson, email.OrderDate.ToString("MM-dd-yyyy"), email.EmailAddress, email.PaymentMethod, email.OrderNumber, email.Product, email.Quantity, email.Subtotal, email.Total };
 
                 valueRange.Values = new List<IList<object>> { oblist };
 
-                var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, SpreadsheetID, workingRange);
+                var appendRequest = Connection.Spreadsheets.Values.Append(valueRange, sheet.WorksheetID, sheet.WorkingRange);
                 appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
                 var appendReponse = appendRequest.Execute();
 
@@ -113,13 +109,12 @@ namespace SheetsApi
         }
 
         //Finds the next SheetID to use for inserting a new record
-        private string GetNextID()
+        public string GetNextID(Worksheet sheet)
         {
             try
             {
-                var workingRange = $"{Sheet}!{Range}";
                 SpreadsheetsResource.ValuesResource.GetRequest request =
-                        Connection.Spreadsheets.Values.Get(SpreadsheetID, workingRange);
+                        Connection.Spreadsheets.Values.Get(sheet.WorksheetID, sheet.WorkingRange);
 
                 var response = request.Execute();
                 IList<IList<object>> values = response.Values;
