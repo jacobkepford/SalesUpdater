@@ -14,6 +14,7 @@ using EmailApi;
 using EmailApi.Data;
 using EmailApi.Utilities;
 using SheetsApi;
+using SheetsApi.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -27,8 +28,7 @@ namespace SalesUpdaterConsole
             //Create instance of Email / Sheet Service through Dependency Injection
             var container = Startup.ConfigureService();
             var emailService = container.GetRequiredService<IEmailService>();
-
-            SheetService sheetService = new SheetService();
+            var sheetService = container.GetRequiredService<ISheetService>();
 
             //Set Label as "Orders"
             string orderLabel = "Label_6420272116865146";
@@ -49,9 +49,11 @@ namespace SalesUpdaterConsole
             List<Email> emails = EmailUtilities.ExtractEmailData(messageBodies);
 
             //Initializing Google Sheet Information
-            sheetService.SpreadsheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
-            sheetService.Sheet = "Sales";
-            sheetService.Range = "A:J";
+            Worksheet sheet = new Worksheet();
+            sheet.WorksheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
+            sheet.Name = "Sales";
+            sheet.Range = "A:J";
+            sheet.WorkingRange = $"{sheet.Name}!{sheet.Range}";
 
             //"Processed" label id
             string newLabel = "Label_5885438401785530646";
@@ -66,7 +68,7 @@ namespace SalesUpdaterConsole
             foreach (Email email in emails)
             {
                 //Writes email data to google sheet
-                string result = sheetService.CreateEntry(email);
+                string result = sheetService.CreateEntry(email, sheet);
 
                 //Check to verify that sheet entry was added properly
                 if (result == "Success")

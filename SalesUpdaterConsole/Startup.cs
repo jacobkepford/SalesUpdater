@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using EmailApi;
+using SheetsApi;
 
 namespace SalesUpdaterConsole
 {
@@ -8,7 +9,10 @@ namespace SalesUpdaterConsole
     {
         public static IServiceProvider ConfigureService()
         {
-            var provider = new ServiceCollection().AddSingleton<IEmailService, EmailService>().BuildServiceProvider();
+            var provider = new ServiceCollection()
+                                .AddSingleton<IEmailService, EmailService>()
+                                .AddSingleton<ISheetService, SheetService>()
+                                .BuildServiceProvider();
 
             return provider;
         }
