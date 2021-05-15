@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "srgbcNQzTJMsLm6Hg2IN6AHA7zthd0OVemnXtb0hidP7GEt9pkj9IIOHe9eNdyQBM4MAV5+C4E+JjQS1lyhAJQ==",
+  "dgSpecHash": "mC2AMWd34StefihZbJs3z4Of1myUqSDDiGKdoHHEHy/IusaHhfVVNnMRtAH20+rz7w2GJbR+mZh/2JQUV0UW2g==",
   "success": true,
   "projectFilePath": "/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/SalesUpdater.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "/Users/jacob/.nuget/packages/google.apis.core/1.51.0/google.apis.core.1.51.0.nupkg.sha512",
     "/Users/jacob/.nuget/packages/google.apis.gmail.v1/1.51.0.2251/google.apis.gmail.v1.1.51.0.2251.nupkg.sha512",
     "/Users/jacob/.nuget/packages/google.apis.sheets.v4/1.51.0.2272/google.apis.sheets.v4.1.51.0.2272.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.1/microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
+    "/Users/jacob/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "/Users/jacob/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []

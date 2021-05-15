@@ -14,24 +14,27 @@ using EmailApi;
 using EmailApi.Data;
 using EmailApi.Utilities;
 using SheetsApi;
+using Microsoft.Extensions.DependencyInjection;
 
 
-namespace SalesUpdater
+namespace SalesUpdaterConsole
 {
     class Program
     {
 
         static void Main(string[] args)
         {
+            //Create instance of Email / Sheet Service through Dependency Injection
+            var container = Startup.ConfigureService();
+            var emailService = container.GetRequiredService<IEmailService>();
 
-            EmailService emailService = new EmailService();
             SheetService sheetService = new SheetService();
 
             //Set Label as "Orders"
-            emailService.Label = "Label_6420272116865146";
+            string orderLabel = "Label_6420272116865146";
 
             //Execute Email request to get all email metadata
-            List<Message> messageDataItems = emailService.GetEmails();
+            List<Message> messageDataItems = emailService.GetEmails(orderLabel);
 
             if (messageDataItems == null || messageDataItems.Count == 0)
             {
@@ -68,7 +71,7 @@ namespace SalesUpdater
                 //Check to verify that sheet entry was added properly
                 if (result == "Success")
                 {
-                    emailService.MoveEmail(messageDataItems[emailCount].Id, newLabel);
+                    emailService.MoveEmail(messageDataItems[emailCount].Id, orderLabel, newLabel);
                 }
                 else
                 {

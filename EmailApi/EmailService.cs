@@ -16,10 +16,10 @@ using EmailApi.Utilities;
 
 namespace EmailApi
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
         public GmailService Connection { get; set; }
-        public string Label { get; set; }
+
 
         public EmailService()
         {
@@ -37,7 +37,7 @@ namespace EmailApi
 
         }
 
-        private static UserCredential GetCredentials(string[] scopes)
+        public UserCredential GetCredentials(string[] scopes)
         {
             UserCredential credential;
             using (var stream =
@@ -59,7 +59,7 @@ namespace EmailApi
         }
 
         // API Request to get Email and Email Metadata
-        public List<Message> GetEmails()
+        public List<Message> GetEmails(string orderLabel)
         {
             List<Message> messageDataItems = new List<Message>();
 
@@ -70,7 +70,7 @@ namespace EmailApi
                 UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
 
                 //Add label to request
-                emailListRequest.LabelIds = Label;
+                emailListRequest.LabelIds = orderLabel;
 
                 IList<Message> messages = emailListRequest.Execute().Messages;
                 if (messages != null && messages.Count > 0)
@@ -96,12 +96,12 @@ namespace EmailApi
 
         }
 
-        public void MoveEmail(string messageDataId, string newLabel)
+        public void MoveEmail(string messageDataId, string orderLabel, string newLabel)
         {
             List<string> addLableIds = new List<string>();
             List<string> removeLableIds = new List<string>();
             //Label the email originated from
-            removeLableIds.Add(Label);
+            removeLableIds.Add(orderLabel);
 
             //Label the email should be  moved to
             addLableIds.Add(newLabel);

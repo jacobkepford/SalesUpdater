@@ -10,6 +10,7 @@
         "dependencies": {
           "EmailApi": "1.0.0",
           "Google.Apis.Gmail.v1": "1.51.0.2251",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1",
           "SheetsApi": "1.0.0"
         },
         "runtime": {
@@ -75,6 +76,25 @@
           "lib/netstandard2.0/Google.Apis.Sheets.v4.dll": {
             "assemblyVersion": "1.51.0.2272",
             "fileVersion": "1.51.0.2272"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/5.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "5.0.0.1",
+            "fileVersion": "5.0.120.57516"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
@@ -145,6 +165,20 @@
       "sha512": "sha512-+j4r4ozoG4dxdNm85QnA5q6HBWRcmuX/U/M3R2xAr5VUTIjuFtc5y8M8Wv8BB1R1OnHzskT3gdwdyRDDZmRD0w==",
       "path": "google.apis.sheets.v4/1.51.0.2272",
       "hashPath": "google.apis.sheets.v4.1.51.0.2272.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-//mDNrYeiJ0eh/awFhDFJQzkRVra/njU5Y4fyK7X29g5HScrzbUkKOKlyTtygthcGFt4zNC8G5CFCjb/oizomA==",
+      "path": "microsoft.extensions.dependencyinjection/5.0.1",
+      "hashPath": "microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ORj7Zh81gC69TyvmcUm9tSzytcy8AVousi+IVRAI8nLieQjOFryRusSFh7+aLk16FN9pQNqJAiMd7BTKINK0kA==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/5.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.3": {
       "type": "package",

@@ -108,6 +108,10 @@
             "Google.Apis.Gmail.v1": {
               "target": "Package",
               "version": "[1.51.0.2251, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
             }
           },
           "imports": [

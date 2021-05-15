@@ -103,3 +103,5 @@ F:/Projects/SalesUpdater/SalesUpdaterConsole/obj/Debug/netcoreapp3.1/SalesUpdate
 /Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/Google.Apis.Sheets.v4.dll
 /Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/SheetsApi.dll
 /Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/SheetsApi.pdb
+/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
+/Users/jacob/Projects/SalesUpdater/SalesUpdaterConsole/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
