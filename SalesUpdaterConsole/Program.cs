@@ -30,8 +30,9 @@ namespace SalesUpdaterConsole
             var emailService = container.GetRequiredService<IEmailService>();
             var sheetService = container.GetRequiredService<ISheetService>();
 
-            //Set Label as "Orders"
+            //Set order and processed labels
             string orderLabel = "Label_6420272116865146";
+            string processedLabel = "Label_5885438401785530646";
 
             //Execute Email request to get all email metadata
             List<Message> messageDataItems = emailService.GetEmails(orderLabel);
@@ -55,9 +56,6 @@ namespace SalesUpdaterConsole
             sheet.Range = "A:J";
             sheet.WorkingRange = $"{sheet.Name}!{sheet.Range}";
 
-            //"Processed" label id
-            string newLabel = "Label_5885438401785530646";
-
             //Count to keep track of current email id
             int emailCount = 0;
 
@@ -73,7 +71,7 @@ namespace SalesUpdaterConsole
                 //Check to verify that sheet entry was added properly
                 if (result == "Success")
                 {
-                    emailService.MoveEmail(messageDataItems[emailCount].Id, orderLabel, newLabel);
+                    emailService.MoveEmail(messageDataItems[emailCount].Id, orderLabel, processedLabel);
                 }
                 else
                 {

@@ -59,7 +59,7 @@ namespace EmailApi
         }
 
         // API Request to get Email and Email Metadata
-        public List<Message> GetEmails(string orderLabel)
+        public List<Message> GetEmails(string processedLabel)
         {
             List<Message> messageDataItems = new List<Message>();
 
@@ -70,7 +70,7 @@ namespace EmailApi
                 UsersResource.MessagesResource.ListRequest emailListRequest = Connection.Users.Messages.List("me");
 
                 //Add label to request
-                emailListRequest.LabelIds = orderLabel;
+                emailListRequest.LabelIds = processedLabel;
 
                 IList<Message> messages = emailListRequest.Execute().Messages;
                 if (messages != null && messages.Count > 0)
@@ -96,7 +96,7 @@ namespace EmailApi
 
         }
 
-        public void MoveEmail(string messageDataId, string orderLabel, string newLabel)
+        public void MoveEmail(string messageDataId, string orderLabel, string processedLabel)
         {
             List<string> addLableIds = new List<string>();
             List<string> removeLableIds = new List<string>();
@@ -104,7 +104,7 @@ namespace EmailApi
             removeLableIds.Add(orderLabel);
 
             //Label the email should be  moved to
-            addLableIds.Add(newLabel);
+            addLableIds.Add(processedLabel);
 
             try
             {
