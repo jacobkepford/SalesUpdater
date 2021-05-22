@@ -1,15 +1,6 @@
-﻿using Google.Apis.Auth.OAuth2;
-using Google.Apis.Gmail.v1;
-using Google.Apis.Gmail.v1.Data;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
+﻿using Google.Apis.Gmail.v1.Data;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using SalesUpdater.Data;
 using SalesUpdater.Core;
 using SalesUpdater.Data.Utilities;
