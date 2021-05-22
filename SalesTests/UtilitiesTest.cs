@@ -1,5 +1,5 @@
 using Xunit;
-using EmailApi.Utilities;
+using SalesUpdater.Data.Utilities;
 
 namespace SalesTests
 {

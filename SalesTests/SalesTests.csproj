@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmailApi\EmailApi.csproj" />
+    <ProjectReference Include="..\SalesUpdater\SalesUpdater.csproj" />
   </ItemGroup>
 
 </Project>

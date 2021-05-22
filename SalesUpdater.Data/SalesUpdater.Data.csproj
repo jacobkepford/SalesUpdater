@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.Sheets.v4" Version="1.51.0.2272" />
+    <PackageReference Include="Google.Apis.Gmail.v1" Version="1.51.0.2251" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SalesUpdater.Core\SalesUpdater.Core.csproj" />
+  </ItemGroup>
+
+</Project>
