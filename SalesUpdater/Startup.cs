@@ -29,7 +29,7 @@ namespace SalesUpdater
             Log.Logger = new LoggerConfiguration() // initiate the logger configuration
                             .ReadFrom.Configuration(builder.Build()) // connect serilog to our configuration folder
                             .Enrich.FromLogContext() //Adds more information to our logs from built in Serilog 
-                            .WriteTo.Console() // decide where the logs are going to be shown
+                            .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day) // decide where the logs are going to be shown
                             .CreateLogger(); //initialise the logger
 
             Log.Logger.Information("Application Starting");
