@@ -3,6 +3,7 @@ using Google.Apis.Gmail.v1;
 using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,11 +14,14 @@ namespace SalesUpdater.Data
 {
     public class EmailService : IEmailService
     {
+        private readonly ILogger<EmailService> _log;
+
         public GmailService Connection { get; set; }
 
 
-        public EmailService()
+        public EmailService(ILogger<EmailService> log)
         {
+            _log = log;
             string[] scopes = { GmailService.Scope.GmailModify };
             string applicationName = "SalesUpdater";
 
@@ -28,8 +32,6 @@ namespace SalesUpdater.Data
                 HttpClientInitializer = credential,
                 ApplicationName = applicationName,
             });
-
-
         }
 
         public UserCredential GetCredentials(string[] scopes)
@@ -47,7 +49,7 @@ namespace SalesUpdater.Data
                     "user",
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
+                _log.LogInformation("Credential file saved to: " + credPath);
             }
             return credential;
 
@@ -84,7 +86,7 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.LogInformation(e.Message);
             }
 
             return messageDataItems;
@@ -114,7 +116,7 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.LogInformation(e.Message);
             }
 
 
