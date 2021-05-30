@@ -8,19 +8,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using SalesUpdater.Core;
+using Microsoft.Extensions.Logging;
 
 namespace SalesUpdater.Data
 {
     public class SheetService : ISheetService
     {
+        private readonly ILogger<SheetService> _log;
+
         public SheetsService Connection { get; set; }
 
         //Intializes new service with credentials and API connection
-        public SheetService()
+        public SheetService(ILogger<SheetService> log)
         {
+            _log = log;
             string[] scopes = { SheetsService.Scope.Spreadsheets };
             string applicationName = "SalesUpdater";
-
 
             UserCredential credential = GetCredentials(scopes);
 
@@ -29,6 +32,7 @@ namespace SalesUpdater.Data
                 HttpClientInitializer = credential,
                 ApplicationName = applicationName,
             });
+
         }
 
         //Gets the credentials to use for the service
@@ -47,7 +51,7 @@ namespace SalesUpdater.Data
                     "user",
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
+                _log.LogInformation("Sheet credential file saved to: " + credPath);
             }
             return credential;
 
@@ -98,8 +102,8 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine($"Unable to process Order #: {email.OrderNumber}");
+                _log.LogInformation(e.Message);
+                _log.LogInformation($"Unable to process Order #: {email.OrderNumber}");
                 result = "Fail";
             }
 
@@ -128,7 +132,7 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.LogInformation(e.Message);
             }
             return "1";
 

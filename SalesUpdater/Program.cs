@@ -29,7 +29,6 @@ namespace SalesUpdater
 
             if (messageDataItems == null || messageDataItems.Count == 0)
             {
-                Console.WriteLine("No emails were found");
                 return;
             }
 

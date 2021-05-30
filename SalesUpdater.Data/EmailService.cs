@@ -49,7 +49,7 @@ namespace SalesUpdater.Data
                     "user",
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
-                _log.LogInformation("Credential file saved to: " + credPath);
+                _log.LogInformation("Email credential file saved to: " + credPath);
             }
             return credential;
 
@@ -81,7 +81,10 @@ namespace SalesUpdater.Data
                         Message emailData = emailInfoRequest.Execute();
                         messageDataItems.Add(emailData);
                     }
+                    return messageDataItems;
                 }
+                _log.LogInformation("No emails were found");
+
 
             }
             catch (Exception e)
