@@ -4,3 +4,4 @@ serviceAccount.json
 SheetToken.json
 bin/
 obj/
+**/logs
