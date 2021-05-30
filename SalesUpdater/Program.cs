@@ -15,9 +15,10 @@ namespace SalesUpdater
         static void Main(string[] args)
         {
             //Create instance of Email / Sheet Service through Dependency Injection
-            var container = Startup.ConfigureService();
-            var emailService = container.GetRequiredService<IEmailService>();
-            var sheetService = container.GetRequiredService<ISheetService>();
+            var host = Startup.AppStartup();
+
+            var emailService = ActivatorUtilities.CreateInstance<EmailService>(host.Services);
+            var sheetService = ActivatorUtilities.CreateInstance<SheetService>(host.Services);
 
             //Set order and processed labels
             string orderLabel = "Label_6420272116865146";
