@@ -89,6 +89,7 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
+                _log.LogInformation("Error when trying to get emails");
                 _log.LogInformation(e.Message);
             }
 
@@ -119,6 +120,7 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
+                _log.LogInformation("Error when trying to move email to processed folder");
                 _log.LogInformation(e.Message);
             }
 

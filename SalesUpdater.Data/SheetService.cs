@@ -102,8 +102,8 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.Message);
                 _log.LogInformation($"Unable to process Order #: {email.OrderNumber}");
+                _log.LogInformation(e.Message);
                 result = "Fail";
             }
 
@@ -132,6 +132,7 @@ namespace SalesUpdater.Data
             }
             catch (Exception e)
             {
+                _log.LogInformation("Unable to get next ID");
                 _log.LogInformation(e.Message);
             }
             return "1";
