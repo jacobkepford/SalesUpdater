@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailApi", "EmailApi\EmailApi.csproj", "{FACB279A-0CC8-4F4E-B900-13FB712AFD5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesUpdater.Core", "SalesUpdater.Core\SalesUpdater.Core.csproj", "{FACB279A-0CC8-4F4E-B900-13FB712AFD5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesUpdater", "SalesUpdaterConsole\SalesUpdater.csproj", "{C90041C1-B944-4A5D-9A84-63CB44BCC45A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesUpdater", "SalesUpdater\SalesUpdater.csproj", "{C90041C1-B944-4A5D-9A84-63CB44BCC45A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesUpdater.Data", "SalesUpdater.Data\SalesUpdater.Data.csproj", "{8C15BF83-4927-4540-9CAA-53D06984A73C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTests", "SalesTests\SalesTests.csproj", "{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,5 +48,29 @@ Global
 		{C90041C1-B944-4A5D-9A84-63CB44BCC45A}.Release|x64.Build.0 = Release|Any CPU
 		{C90041C1-B944-4A5D-9A84-63CB44BCC45A}.Release|x86.ActiveCfg = Release|Any CPU
 		{C90041C1-B944-4A5D-9A84-63CB44BCC45A}.Release|x86.Build.0 = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x64.Build.0 = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Debug|x86.Build.0 = Debug|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x64.ActiveCfg = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x64.Build.0 = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C15BF83-4927-4540-9CAA-53D06984A73C}.Release|x86.Build.0 = Release|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Debug|x64.Build.0 = Debug|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Debug|x86.Build.0 = Debug|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Release|x64.ActiveCfg = Release|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Release|x64.Build.0 = Release|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A921C11-CFD9-491F-9E18-0F1C0218EDB5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

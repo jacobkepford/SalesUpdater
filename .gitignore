@@ -1,2 +1,7 @@
 credentials.json
 token.json
+serviceAccount.json
+SheetToken.json
+bin/
+obj/
+**/logs
