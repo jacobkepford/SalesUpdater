@@ -99,8 +99,6 @@ namespace SalesUpdater.Data.Utilities
 
             }
 
-
-
             return emails;
         }
     }
