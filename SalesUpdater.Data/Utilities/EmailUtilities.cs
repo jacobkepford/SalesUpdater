@@ -56,7 +56,7 @@ namespace SalesUpdater.Data.Utilities
                 email.Quantity = EmailSearch(message, orderQuantity);
 
                 //Format and run regex search for person who placed order
-                string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):";
+                string orderPersonNameExpr = "order from ([a-zA-z]* [a-zA-Z]. ?[a-zA-z]*):";
                 email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
 
                 //Format and run regex search for date order was placed

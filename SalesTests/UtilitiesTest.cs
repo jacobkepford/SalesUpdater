@@ -15,7 +15,7 @@ namespace SalesTests
         //Quantity
         [InlineData("Price.* ([\\d]*) \\$", "1")]
         //Name
-        [InlineData("order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):", "Richard Seger")]
+        [InlineData("order from ([a-zA-z]* [a-zA-Z]. ?[a-zA-z]*):", "Richard Seger")]
         //Order Date
         [InlineData("\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product", "March20, 2021")]
         //Email address
