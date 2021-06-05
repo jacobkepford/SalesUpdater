@@ -38,25 +38,21 @@ namespace SalesUpdater
                 return;
             }
 
+            _logger.LogInformation($"{messageDataItems.Count} email(s) found");
+
             //Extract email body from each email
             List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);
 
             //Extract key email data from each email body
             List<Email> emails = EmailUtilities.ExtractEmailData(messageBodies);
 
-            //Initializing Google Sheet Information
-            Worksheet sheet = new Worksheet();
-            sheet.WorksheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
-            sheet.Name = "Sales";
-            sheet.Range = "A:J";
-            sheet.WorkingRange = $"{sheet.Name}!{sheet.Range}";
+            //Initialize Google Sheet Information
+            Worksheet sheet = CreateWorksheet();
 
             //Count to keep track of current email id
             int emailCount = 0;
-
             //Count to keep track of failures
             int failCount = 0;
-
 
             foreach (Email email in emails)
             {
@@ -79,5 +75,17 @@ namespace SalesUpdater
             _logger.LogInformation($"All emails have been processed with {failCount} error(s).");
             Console.WriteLine($"All emails have been processed with {failCount} error(s).");
         }
+
+        private Worksheet CreateWorksheet()
+        {
+            //Initializing Google Sheet Information
+            Worksheet sheet = new Worksheet();
+            sheet.WorksheetID = "1v9GJRu5CwjXW_r2ELlHbjujTUdDj27DMxLb4lutI5Ug";
+            sheet.Name = "Sales";
+            sheet.Range = "A:J";
+            sheet.WorkingRange = $"{sheet.Name}!{sheet.Range}";
+            return sheet;
+        }
+
     }
 }
