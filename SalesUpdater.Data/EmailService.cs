@@ -83,7 +83,6 @@ namespace SalesUpdater.Data
                     }
                     return messageDataItems;
                 }
-                _log.LogInformation("No emails were found");
 
 
             }

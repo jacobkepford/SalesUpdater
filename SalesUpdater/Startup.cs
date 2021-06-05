@@ -37,8 +37,9 @@ namespace SalesUpdater
             var host = Host.CreateDefaultBuilder() // Initialising the Host 
                         .ConfigureServices((context, services) =>
                         {
-                            services.AddTransient<IEmailService, EmailService>();
-                            services.AddTransient<ISheetService, SheetService>();
+                            services.AddSingleton<IEmailService, EmailService>();
+                            services.AddSingleton<ISheetService, SheetService>();
+                            services.AddSingleton<IApp, App>();
 
                         })
                         .UseSerilog() // Add Serilog
