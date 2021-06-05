@@ -23,6 +23,14 @@ namespace SalesTests
         [InlineData("order from ([a-zA-z]* [a-zA-Z?][a-zA-z]*):", "Richard Seger")]
         //Order Date
         [InlineData("\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product", "March20, 2021")]
+        //Email address
+        [InlineData("[0-9]{10}>(.*@.*\\.com)", "pnr149@yahoo.com")]
+        //Payment method
+        [InlineData("method: (.*)Total", "Credit Card")]
+        //Subtotal
+        [InlineData("Subtotal: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Discount", "$899.00")]
+        //Total
+        [InlineData("Total: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Order", "$1,078.76")]
         public void EmailSearchMatch(string expr, string result)
         {
             string message = Message;
