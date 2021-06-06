@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using SalesUpdater.Data;
 using SalesUpdater.Core;
 using SalesUpdater.Data.Utilities;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace SalesUpdater

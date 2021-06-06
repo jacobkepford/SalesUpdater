@@ -1,12 +1,4 @@
-﻿using Google.Apis.Gmail.v1.Data;
-using System;
-using System.Collections.Generic;
-using SalesUpdater.Data;
-using SalesUpdater.Core;
-using SalesUpdater.Data.Utilities;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace SalesUpdater
 {
