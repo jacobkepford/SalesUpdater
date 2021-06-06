@@ -30,6 +30,7 @@ namespace SalesUpdater.Data.Utilities
                 byte[] data = Convert.FromBase64String(codedBody);
                 body = Encoding.UTF8.GetString(data);
                 body = body.Replace("\r\n", "");
+                body = body.Replace("*", " ");
                 messageBodies.Add(body);
             }
             return messageBodies;
@@ -60,7 +61,7 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
 
                 //Format and run regex search for date order was placed
-                string orderDateExpr = "\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product";
+                string orderDateExpr = "\\(([A-Z][a-z]+ ?[0-9]*, [0-9]{4})\\) ?Product";
                 string emailOrderDate = EmailSearch(message, orderDateExpr);
                 string pattern = "([A-Z][a-z]+)([0-9]*,)";
                 string replacement = "$1" + " " + "$2";
@@ -71,7 +72,7 @@ namespace SalesUpdater.Data.Utilities
                 email.EmailAddress = EmailSearch(message, emailAddressExpr);
 
                 //Format and run regex search for Payment Method
-                string paymentMethodExpr = "method: (.*)Total";
+                string paymentMethodExpr = "method: (.*) Total";
                 string payment = EmailSearch(message, paymentMethodExpr);
 
                 if (payment == "Credit Card")
