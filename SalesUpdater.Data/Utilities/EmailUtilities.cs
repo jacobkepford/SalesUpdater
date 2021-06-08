@@ -12,25 +12,43 @@ namespace SalesUpdater.Data.Utilities
 
         public static string EmailSearch(string text, string expr)
         {
-            Match m = Regex.Match(text, expr);
-            Group g = m.Groups[1];
-            return g.ToString();
+            try
+            {
+                Match m = Regex.Match(text, expr);
+                Group g = m.Groups[1];
+                return g.ToString();
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Unable to find match");
+                return "";
+            }
+            
         }
 
         //Pull email body from each email supplied
         public static List<string> EmailBodyCleanup(List<Message> messageDataItems)
         {
             List<string> messageBodies = new List<string>();
+            string body = "";
 
             foreach (var messageItem in messageDataItems)
             {
-                string body = messageItem.Payload.Parts[0].Body.Data;
+                if (messageItem.Payload.Parts == null)
+                {
+                    body = messageItem.Payload.Body.Data;            
+                }
+                else
+                {
+                    body = messageItem.Payload.Parts[0].Body.Data;
+                }
                 string codedBody = body.Replace("-", "+");
                 codedBody = codedBody.Replace("_", "/");
                 byte[] data = Convert.FromBase64String(codedBody);
                 body = Encoding.UTF8.GetString(data);
                 body = body.Replace("\r\n", "");
                 messageBodies.Add(body);
+                
             }
             return messageBodies;
         }
@@ -62,6 +80,10 @@ namespace SalesUpdater.Data.Utilities
                 //Format and run regex search for date order was placed
                 string orderDateExpr = "\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product";
                 string emailOrderDate = EmailSearch(message, orderDateExpr);
+                if (emailOrderDate == "")
+                {
+                    emailOrderDate = "January1, 2001";
+                }
                 string pattern = "([A-Z][a-z]+)([0-9]*,)";
                 string replacement = "$1" + " " + "$2";
                 email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
