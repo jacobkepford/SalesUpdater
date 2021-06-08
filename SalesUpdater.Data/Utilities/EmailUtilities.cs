@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Google.Apis.Gmail.v1.Data;
 using System.Text;
 using SalesUpdater.Core;
+using System.Web;
 
 namespace SalesUpdater.Data.Utilities
 {
@@ -26,6 +27,11 @@ namespace SalesUpdater.Data.Utilities
             
         }
 
+        public static string StripHtml(string body)
+        {
+            return Regex.Replace(body, "<.*?>", String.Empty);
+        }
+
         //Pull email body from each email supplied
         public static List<string> EmailBodyCleanup(List<Message> messageDataItems)
         {
@@ -46,7 +52,9 @@ namespace SalesUpdater.Data.Utilities
                 codedBody = codedBody.Replace("_", "/");
                 byte[] data = Convert.FromBase64String(codedBody);
                 body = Encoding.UTF8.GetString(data);
-                body = body.Replace("\r\n", "");
+                body = StripHtml(body);
+                body = body.Replace("\t", "");
+                body = body.Replace("\n", "");
                 messageBodies.Add(body);
                 
             }
