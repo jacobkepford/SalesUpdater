@@ -55,6 +55,7 @@ namespace SalesUpdater.Data.Utilities
                 body = StripHtml(body);
                 body = body.Replace("\t", "");
                 body = body.Replace("\n", "");
+                body = body.Replace("&amp;", "&");
                 messageBodies.Add(body);
                 
             }
@@ -74,11 +75,11 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderNumber = EmailSearch(message, orderIDExpr);
 
                 //Format and run regex search for product
-                string orderProductExpr = "Price(.*) [\\d]* \\$";
+                string orderProductExpr = "Price(.*)[\\d]{1,3}\\$";
                 email.Product = EmailSearch(message, orderProductExpr);
 
                 //Format and run regex search for Quantity
-                string orderQuantity = "Price.* ([\\d]*) \\$";
+                string orderQuantity = "Price.*([\\d]{1,3})\\$";
                 email.Quantity = EmailSearch(message, orderQuantity);
 
                 //Format and run regex search for person who placed order
@@ -86,22 +87,22 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
 
                 //Format and run regex search for date order was placed
-                string orderDateExpr = "\\(([A-Z][a-z]+[0-9]*, [0-9]{4})\\)Product";
+                string orderDateExpr = "\\(([A-Z][a-z]+ [0-9]*, [0-9]{4})\\)Product";
                 string emailOrderDate = EmailSearch(message, orderDateExpr);
                 if (emailOrderDate == "")
                 {
-                    emailOrderDate = "January1, 2001";
+                    emailOrderDate = "January 1, 2001";
                 }
                 string pattern = "([A-Z][a-z]+)([0-9]*,)";
                 string replacement = "$1" + " " + "$2";
                 email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
 
                 //Format and run regex search for email address
-                string emailAddressExpr = "[0-9]{10}>(.*@.*\\.com)";
+                string emailAddressExpr = "-[0-9]{4}(.*@.*\\.[a-zA-Z]+)Shipping";
                 email.EmailAddress = EmailSearch(message, emailAddressExpr);
 
                 //Format and run regex search for Payment Method
-                string paymentMethodExpr = "method: (.*)Total";
+                string paymentMethodExpr = "method:(.*)Total";
                 string payment = EmailSearch(message, paymentMethodExpr);
 
                 if (payment == "Credit Card")
@@ -118,11 +119,11 @@ namespace SalesUpdater.Data.Utilities
                 }
 
                 //Format and run regex search for Subtotal
-                string subtotalExpr = "Subtotal: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Discount";
+                string subtotalExpr = "Subtotal:(.*\\.\\d{2})Shipping";
                 email.Subtotal = EmailSearch(message, subtotalExpr);
 
                 //Format and run regex for total
-                string totalExpr = "Total: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Order";
+                string totalExpr = "Total:(.*\\.\\d{2})Order";
                 email.Total = EmailSearch(message, totalExpr);
 
                 emails.Add(email);
