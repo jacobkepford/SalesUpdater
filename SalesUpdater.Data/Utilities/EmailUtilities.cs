@@ -98,7 +98,7 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
 
                 //Format and run regex search for email address
-                string emailAddressExpr = "-[0-9]{4}(.*@.*\\.[a-zA-Z]+)Shipping";
+                string emailAddressExpr = "address.*[0-9]+([a-z].*@.*\\.[a-zA-Z]+)Shipping";
                 email.EmailAddress = EmailSearch(message, emailAddressExpr);
 
                 //Format and run regex search for Payment Method
