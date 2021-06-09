@@ -24,7 +24,7 @@ namespace SalesUpdater.Data.Utilities
                 Console.WriteLine("Unable to find match");
                 return "";
             }
-            
+
         }
 
         public static string StripHtml(string body)
@@ -42,7 +42,7 @@ namespace SalesUpdater.Data.Utilities
             {
                 if (messageItem.Payload.Parts == null)
                 {
-                    body = messageItem.Payload.Body.Data;            
+                    body = messageItem.Payload.Body.Data;
                 }
                 else
                 {
@@ -57,7 +57,7 @@ namespace SalesUpdater.Data.Utilities
                 body = body.Replace("\n", "");
                 body = body.Replace("&amp;", "&");
                 messageBodies.Add(body);
-                
+
             }
             return messageBodies;
         }
@@ -98,7 +98,7 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
 
                 //Format and run regex search for email address
-                string emailAddressExpr = "address.*[0-9]+([a-z].*@.*\\.[a-zA-Z]+)Shipping";
+                string emailAddressExpr = "address.*[0-9]+([a-zA-Z].*@.*\\.[a-zA-Z]+)Shipping";
                 email.EmailAddress = EmailSearch(message, emailAddressExpr);
 
                 //Format and run regex search for Payment Method
@@ -109,13 +109,9 @@ namespace SalesUpdater.Data.Utilities
                 {
                     email.PaymentMethod = "Stripe";
                 }
-                else if (payment == "PayPal")
-                {
-                    email.PaymentMethod = "PayPal";
-                }
                 else
                 {
-                    email.PaymentMethod = "Not Found";
+                    email.PaymentMethod = payment;
                 }
 
                 //Format and run regex search for Subtotal

@@ -19,7 +19,7 @@ namespace SalesTests
         //Order Date
         [InlineData("\\(([A-Z][a-z]+ [0-9]*, [0-9]{4})\\)Product", "June 8, 2021")]
         //Email address
-        [InlineData("address.*[0-9]+([a-z].*@.*\\.[a-zA-Z]+)Shipping", "eweinmann@sbcglobal.net")]
+        [InlineData("address.*[0-9]+([a-zA-Z].*@.*\\.[a-zA-Z]+)Shipping", "eweinmann@sbcglobal.net")]
         //Payment method
         [InlineData("method:(.*)Total", "PayPal")]
         //Subtotal
