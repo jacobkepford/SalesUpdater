@@ -2,7 +2,7 @@ using Xunit;
 using SalesUpdater.Data.Utilities;
 using System.Text.RegularExpressions;
 
-namespace SalesTests
+namespace SalesUpdater.Tests
 {
     public class UtilitiesTest
     {
@@ -11,7 +11,7 @@ namespace SalesTests
         //Order Number
         [InlineData("Order: \\#([0-9]+)", "33477")]
         //Product
-        [InlineData("Price(.*)[\\d]{1,3}\\$", "RhinoHide Tractor Canopy - Removable")]
+        [InlineData("QuantityPrice(.*)[\\d]{1,3}\\$", "RhinoHide Tractor Canopy - Removable")]
         //Quantity
         [InlineData("Price.*([\\d]{1,3})\\$", "1")]
         //Name
