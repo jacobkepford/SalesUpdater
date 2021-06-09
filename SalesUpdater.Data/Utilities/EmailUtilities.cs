@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Google.Apis.Gmail.v1.Data;
 using System.Text;
 using SalesUpdater.Core;
+using System.Web;
 
 namespace SalesUpdater.Data.Utilities
 {
@@ -12,26 +13,51 @@ namespace SalesUpdater.Data.Utilities
 
         public static string EmailSearch(string text, string expr)
         {
-            Match m = Regex.Match(text, expr);
-            Group g = m.Groups[1];
-            return g.ToString();
+            try
+            {
+                Match m = Regex.Match(text, expr);
+                Group g = m.Groups[1];
+                return g.ToString();
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Unable to find match");
+                return "";
+            }
+
+        }
+
+        public static string StripHtml(string body)
+        {
+            return Regex.Replace(body, "<.*?>", String.Empty);
         }
 
         //Pull email body from each email supplied
         public static List<string> EmailBodyCleanup(List<Message> messageDataItems)
         {
             List<string> messageBodies = new List<string>();
+            string body = "";
 
             foreach (var messageItem in messageDataItems)
             {
-                string body = messageItem.Payload.Parts[0].Body.Data;
+                if (messageItem.Payload.Parts == null)
+                {
+                    body = messageItem.Payload.Body.Data;
+                }
+                else
+                {
+                    body = messageItem.Payload.Parts[0].Body.Data;
+                }
                 string codedBody = body.Replace("-", "+");
                 codedBody = codedBody.Replace("_", "/");
                 byte[] data = Convert.FromBase64String(codedBody);
                 body = Encoding.UTF8.GetString(data);
-                body = body.Replace("\r\n", "");
-                body = body.Replace("*", " ");
+                body = StripHtml(body);
+                body = body.Replace("\t", "");
+                body = body.Replace("\n", "");
+                body = body.Replace("&amp;", "&");
                 messageBodies.Add(body);
+
             }
             return messageBodies;
         }
@@ -49,11 +75,11 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderNumber = EmailSearch(message, orderIDExpr);
 
                 //Format and run regex search for product
-                string orderProductExpr = "Price(.*) [\\d]* \\$";
+                string orderProductExpr = "Price(.*)[\\d]{1,3}\\$";
                 email.Product = EmailSearch(message, orderProductExpr);
 
                 //Format and run regex search for Quantity
-                string orderQuantity = "Price.* ([\\d]*) \\$";
+                string orderQuantity = "Price.*([\\d]{1,3})\\$";
                 email.Quantity = EmailSearch(message, orderQuantity);
 
                 //Format and run regex search for person who placed order
@@ -61,39 +87,39 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderPerson = EmailSearch(message, orderPersonNameExpr);
 
                 //Format and run regex search for date order was placed
-                string orderDateExpr = "\\(([A-Z][a-z]+ ?[0-9]*, [0-9]{4})\\) ?Product";
+                string orderDateExpr = "\\(([A-Z][a-z]+ [0-9]*, [0-9]{4})\\)Product";
                 string emailOrderDate = EmailSearch(message, orderDateExpr);
+                if (emailOrderDate == "")
+                {
+                    emailOrderDate = "January 1, 2001";
+                }
                 string pattern = "([A-Z][a-z]+)([0-9]*,)";
                 string replacement = "$1" + " " + "$2";
                 email.OrderDate = DateTime.Parse(Regex.Replace(emailOrderDate, pattern, replacement));
 
                 //Format and run regex search for email address
-                string emailAddressExpr = "[0-9]{10}>(.*@.*\\.com)";
+                string emailAddressExpr = "address.*[0-9]+([a-zA-Z].*@.*\\.[a-zA-Z]+)Shipping";
                 email.EmailAddress = EmailSearch(message, emailAddressExpr);
 
                 //Format and run regex search for Payment Method
-                string paymentMethodExpr = "method: (.*) Total";
+                string paymentMethodExpr = "method:(.*)Total";
                 string payment = EmailSearch(message, paymentMethodExpr);
 
                 if (payment == "Credit Card")
                 {
                     email.PaymentMethod = "Stripe";
                 }
-                else if (payment == "PayPal")
-                {
-                    email.PaymentMethod = "PayPal";
-                }
                 else
                 {
-                    email.PaymentMethod = "Not Found";
+                    email.PaymentMethod = payment;
                 }
 
                 //Format and run regex search for Subtotal
-                string subtotalExpr = "Subtotal: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Discount";
+                string subtotalExpr = "Subtotal:(.*\\.\\d{2})Shipping";
                 email.Subtotal = EmailSearch(message, subtotalExpr);
 
                 //Format and run regex for total
-                string totalExpr = "Total: (\\$[0-9]*,?[0-9]*?\\.[0-9]{2})Order";
+                string totalExpr = "Total:(.*\\.\\d{2})Order";
                 email.Total = EmailSearch(message, totalExpr);
 
                 emails.Add(email);
