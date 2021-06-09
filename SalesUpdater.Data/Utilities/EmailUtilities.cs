@@ -75,7 +75,7 @@ namespace SalesUpdater.Data.Utilities
                 email.OrderNumber = EmailSearch(message, orderIDExpr);
 
                 //Format and run regex search for product
-                string orderProductExpr = "Price(.*)[\\d]{1,3}\\$";
+                string orderProductExpr = "QuantityPrice(.*)[\\d]{1,3}\\$";
                 email.Product = EmailSearch(message, orderProductExpr);
 
                 //Format and run regex search for Quantity
