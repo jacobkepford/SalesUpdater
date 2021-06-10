@@ -4,36 +4,32 @@ using System.Collections.Generic;
 using Google.Apis.Gmail.v1.Data;
 using System.Text;
 using SalesUpdater.Core;
-using System.Web;
+using Microsoft.Extensions.Logging;
 
-namespace SalesUpdater.Data.Utilities
+namespace SalesUpdater.Data
 {
-    public static class EmailUtilities
+    public class EmailUtilities : IEmailUtilities
     {
+        private readonly ILogger<EmailUtilities> _logger;
 
-        public static string EmailSearch(string text, string expr)
+        public EmailUtilities(ILogger<EmailUtilities> logger)
         {
-            try
-            {
-                Match m = Regex.Match(text, expr);
-                Group g = m.Groups[1];
-                return g.ToString();
-            }
-            catch (System.Exception)
-            {
-                Console.WriteLine("Unable to find match");
-                return "";
-            }
-
+            _logger = logger;
+        }
+        public string EmailSearch(string text, string expr)
+        {
+            Match m = Regex.Match(text, expr);
+            Group g = m.Groups[1];
+            return g.ToString();
         }
 
-        public static string StripHtml(string body)
+        public string StripHtml(string body)
         {
             return Regex.Replace(body, "<.*?>", String.Empty);
         }
 
         //Pull email body from each email supplied
-        public static List<string> EmailBodyCleanup(List<Message> messageDataItems)
+        public List<string> EmailBodyCleanup(List<Message> messageDataItems)
         {
             List<string> messageBodies = new List<string>();
             string body = "";
@@ -62,7 +58,7 @@ namespace SalesUpdater.Data.Utilities
             return messageBodies;
         }
         //Pulls key order data from supplied emails
-        public static List<Email> ExtractEmailData(List<string> messageBodies)
+        public List<Email> ExtractEmailData(List<string> messageBodies)
         {
             List<Email> emails = new List<Email>();
 
@@ -127,6 +123,13 @@ namespace SalesUpdater.Data.Utilities
             }
 
             return emails;
+        }
+
+        public string GetOrderID(string message)
+        {
+            string orderIDExpr = "Order: \\#([0-9]+)";
+            string orderID = EmailSearch(message, orderIDExpr);
+            return orderID;
         }
     }
 }

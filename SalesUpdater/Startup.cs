@@ -40,6 +40,7 @@ namespace SalesUpdater
                             services.AddSingleton<IEmailService, EmailService>();
                             services.AddSingleton<ISheetService, SheetService>();
                             services.AddSingleton<IApp, App>();
+                            services.AddSingleton<IEmailUtilities, EmailUtilities>();
 
                         })
                         .UseSerilog() // Add Serilog
