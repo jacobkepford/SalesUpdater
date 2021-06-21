@@ -12,12 +12,14 @@ namespace SalesUpdater
         private readonly ILogger _logger;
         private readonly IEmailService _emailService;
         private readonly ISheetService _sheetService;
+        private readonly IEmailUtilities _emailUtilities;
 
-        public App(ILogger<App> logger, IEmailService emailService, ISheetService sheetService)
+        public App(ILogger<App> logger, IEmailService emailService, ISheetService sheetService, IEmailUtilities emailUtilities)
         {
             _logger = logger;
             _emailService = emailService;
             _sheetService = sheetService;
+            _emailUtilities = emailUtilities;
         }
 
         public void Run()
@@ -39,10 +41,10 @@ namespace SalesUpdater
             _logger.LogInformation($"{messageDataItems.Count} email(s) found");
 
             //Extract email body from each email
-            List<string> messageBodies = EmailUtilities.EmailBodyCleanup(messageDataItems);
+            List<string> messageBodies = _emailUtilities.EmailBodyCleanup(messageDataItems);
 
             //Extract key email data from each email body
-            List<Email> emails = EmailUtilities.ExtractEmailData(messageBodies);
+            List<Email> emails = _emailUtilities.ExtractEmailData(messageBodies);
 
             //Initialize Google Sheet Information
             Worksheet sheet = CreateWorksheet();
