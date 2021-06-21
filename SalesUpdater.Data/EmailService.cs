@@ -4,6 +4,7 @@ using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Microsoft.Extensions.Logging;
+using SalesUpdater.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,13 +16,16 @@ namespace SalesUpdater.Data
     public class EmailService : IEmailService
     {
         private readonly ILogger<EmailService> _log;
+        private readonly IEmailUtilities _emailUtilities;
 
         public GmailService Connection { get; set; }
 
 
-        public EmailService(ILogger<EmailService> log)
+
+        public EmailService(ILogger<EmailService> log, IEmailUtilities emailUtilities)
         {
             _log = log;
+            _emailUtilities = emailUtilities;
             string[] scopes = { GmailService.Scope.GmailModify };
             string applicationName = "SalesUpdater";
 
@@ -56,7 +60,7 @@ namespace SalesUpdater.Data
         }
 
         // API Request to get Email and Email Metadata
-        public List<Message> GetEmails(string processedLabel)
+        public List<Message> GetRawEmails(string processedLabel)
         {
             List<Message> messageDataItems = new List<Message>();
 
@@ -126,5 +130,15 @@ namespace SalesUpdater.Data
 
         }
 
+        public List<Email> GetEmailBodies(List<Message> messageDataItems)
+        {
+            //Extract email body from each email
+            List<string> messageBodies = _emailUtilities.EmailBodyCleanup(messageDataItems);
+
+            //Extract key email data from each email body
+            List<Email> emails = _emailUtilities.ExtractEmailData(messageBodies);
+
+            return emails;
+        }
     }
 }

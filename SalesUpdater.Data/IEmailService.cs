@@ -1,5 +1,6 @@
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1.Data;
+using SalesUpdater.Core;
 using System.Collections.Generic;
 
 namespace SalesUpdater.Data
@@ -7,7 +8,8 @@ namespace SalesUpdater.Data
     public interface IEmailService
     {
         UserCredential GetCredentials(string[] scopes);
-        List<Message> GetEmails(string orderLabel);
+        List<Message> GetRawEmails(string orderLabel);
+        List<Email> GetEmailBodies(List<Message> messageDataItems);
         void MoveEmail(string messageDataId, string orderLabel, string newLabel);
 
     }

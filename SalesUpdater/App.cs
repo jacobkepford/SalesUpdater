@@ -12,14 +12,11 @@ namespace SalesUpdater
         private readonly ILogger _logger;
         private readonly IEmailService _emailService;
         private readonly ISheetService _sheetService;
-        private readonly IEmailUtilities _emailUtilities;
-
-        public App(ILogger<App> logger, IEmailService emailService, ISheetService sheetService, IEmailUtilities emailUtilities)
+        public App(ILogger<App> logger, IEmailService emailService, ISheetService sheetService)
         {
             _logger = logger;
             _emailService = emailService;
             _sheetService = sheetService;
-            _emailUtilities = emailUtilities;
         }
 
         public void Run()
@@ -29,7 +26,7 @@ namespace SalesUpdater
             string processedLabel = "Label_5885438401785530646";
 
             //Execute Email request to get all email metadata
-            List<Message> messageDataItems = _emailService.GetEmails(orderLabel);
+            List<Message> messageDataItems = _emailService.GetRawEmails(orderLabel);
 
             if (messageDataItems == null || messageDataItems.Count == 0)
             {
@@ -40,11 +37,7 @@ namespace SalesUpdater
 
             _logger.LogInformation($"{messageDataItems.Count} email(s) found");
 
-            //Extract email body from each email
-            List<string> messageBodies = _emailUtilities.EmailBodyCleanup(messageDataItems);
-
-            //Extract key email data from each email body
-            List<Email> emails = _emailUtilities.ExtractEmailData(messageBodies);
+            List<Email> emails = _emailService.GetEmailBodies(messageDataItems);
 
             //Initialize Google Sheet Information
             Worksheet sheet = CreateWorksheet();
