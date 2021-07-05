@@ -1,6 +1,8 @@
 using Xunit;
 using SalesUpdater.Data;
 using System.Text.RegularExpressions;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace SalesUpdater.Tests
 {
@@ -28,9 +30,13 @@ namespace SalesUpdater.Tests
         [InlineData("Total:(.*\\.\\d{2})Order", "$321.00")]
         public void EmailSearchMatch(string expr, string result)
         {
-            // string message = "Ask Tractor MikeNew Order: #33477You’ve received the following order from Eric Weinmann:[Order #33477] (June 8, 2021)ProductQuantityPriceRhinoHide Tractor Canopy - Removable1$265.00Subtotal:$265.00Shipping:$56.00 via Shipping &amp; HandlingTax:$0.00Payment method:PayPalTotal:$321.00Order NotesThere are no notes for this order yet.Billing addressEric Weinmann5705 Fawnridge RdAuburn, CA 95602951-970-5271eweinmann@sbcglobal.netShipping addressBob Weinmann217 N 19th StreetCanon City, CO 81212Tractor Mike and his family thank you for your order…it’s a pleasure doing business with you!";
-            // string orderPerson = EmailUtilities.EmailSearch(message, expr);
-            // Assert.Equal(result, orderPerson);
+            var mock = new Mock<ILogger<EmailUtilities>>();
+            ILogger<EmailUtilities> logger = mock.Object;
+
+            var _emailUtilitiy = new EmailUtilities(logger);
+            string message = "Ask Tractor MikeNew Order: #33477You’ve received the following order from Eric Weinmann:[Order #33477] (June 8, 2021)ProductQuantityPriceRhinoHide Tractor Canopy - Removable1$265.00Subtotal:$265.00Shipping:$56.00 via Shipping &amp; HandlingTax:$0.00Payment method:PayPalTotal:$321.00Order NotesThere are no notes for this order yet.Billing addressEric Weinmann5705 Fawnridge RdAuburn, CA 95602951-970-5271eweinmann@sbcglobal.netShipping addressBob Weinmann217 N 19th StreetCanon City, CO 81212Tractor Mike and his family thank you for your order…it’s a pleasure doing business with you!";
+            string orderPerson = _emailUtilitiy.EmailSearch(message, expr);
+            Assert.Equal(result, orderPerson);
         }
 
     }
